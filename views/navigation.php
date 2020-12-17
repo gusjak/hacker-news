@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#"><?php echo $config['title']; ?></a>
+    <a class="navbar-brand" href="/index.php"><?php echo $config['title']; ?></a>
 
     <ul class="navbar-nav">
         <li class="nav-item">
@@ -8,6 +8,10 @@
 
         <li class="nav-item">
             <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/about.php' ? 'active' : ''; ?>" href="/about.php">About</a>
+        </li><!-- /nav-item -->
+
+        <li class="nav-item">
+            <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/register.php' ? 'active' : ''; ?>" href="/register.php">Register</a>
         </li><!-- /nav-item -->
 
         <li class="nav-item">
