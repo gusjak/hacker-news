@@ -12,7 +12,7 @@ You're going to create a [Hacker News](https://news.ycombinator.com/news) clone.
 
 ## Features / User stories
 
-- [ ] As a user I should be able to create an account.
+- [x] As a user I should be able to create an account.
 
 - [x] As a user I should be able to login.
 
