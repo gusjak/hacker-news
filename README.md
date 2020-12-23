@@ -14,11 +14,11 @@ You're going to create a [Hacker News](https://news.ycombinator.com/news) clone.
 
 - [ ] As a user I should be able to create an account.
 
-- [ ] As a user I should be able to login.
+- [x] As a user I should be able to login.
 
 - [x] As a user I should be able to logout.
 
-- [x] As a user I should be able to edit my account email, password and biography.
+- [ ] As a user I should be able to edit my account email, password and biography.
 
 - [ ] As a user I should be able to upload a profile avatar image.
 
