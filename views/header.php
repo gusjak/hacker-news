@@ -12,6 +12,8 @@
 </head>
 
 <body>
+
     <?php require __DIR__ . '/navigation.php'; ?>
+    <?php require __DIR__ . '/../app/message.php'; ?>
 
     <div class="container py-5">

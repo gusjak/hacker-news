@@ -19,6 +19,7 @@ if (isset($_POST['email'], $_POST['password'])) {
     // If we couldn't find the user in the database, redirect back to the login
     // page with our custom redirect function.
     if (!$user) {
+        $_SESSION['message'] = 'No account exists for the email you\'ve entered. Please try again.';
         redirect('/login.php');
     }
 
@@ -31,6 +32,9 @@ if (isset($_POST['email'], $_POST['password'])) {
         unset($user['password']);
 
         $_SESSION['user'] = $user;
+    } else {
+        $_SESSION['message'] = 'The password doesn\'t match the username. Please try again.';
+        redirect('/login.php');
     }
 }
 
