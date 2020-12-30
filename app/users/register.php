@@ -8,11 +8,6 @@ require __DIR__ . '/../autoload.php';
 if (isset($_POST['email'], $_POST['username'], $_POST['password'])) {
     $email = trim(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL));
     $username = trim(filter_var($_POST['username'], FILTER_SANITIZE_STRING));
-    $password = trim(password_hash($_POST['password'], PASSWORD_BCRYPT));
-
-    if ($_POST['password'] !== $_POST['comfirm_password']) {
-        $_SESSION['message'] = 'Your passwords doesn\'t, please try again.';
-    }
 
     if (existingEmail($email, $pdo)) {
         $_SESSION['message'] = 'This email is already in use.';
@@ -23,6 +18,13 @@ if (isset($_POST['email'], $_POST['username'], $_POST['password'])) {
         $_SESSION['message'] = 'This username is already in use.';
         redirect('/register.php');
     }
+
+    if ($_POST['password'] !== $_POST['comfirm_password']) {
+        $_SESSION['message'] = 'Your passwords doesn\'t match, please try again.';
+        redirect('/register.php');
+    }
+
+    $password = trim(password_hash($_POST['password'], PASSWORD_BCRYPT));
 
     $query = 'INSERT INTO users (email, username, password) VALUES (:email, :username, :password)';
     $statement = $pdo->prepare($query);
