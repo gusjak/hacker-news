@@ -6,21 +6,22 @@
 
     <form action="app/posts/store.php" method="post">
         <div class="form-group">
-            <label for="title">Title</label>
             <input class="form-control" type="text" name="title" id="title" required>
+            <small class="form-text text-muted">Title</small>
         </div><!-- /form-group -->
 
         <div class="form-group">
-            <label for="link">Url</label>
             <input class="form-control" type="url" name="url" id="url" required>
+            <small class="form-text text-muted">Url</small>
         </div><!-- /form-group -->
 
+        <br>
         <small class="form-text text-muted">or</small>
         <br>
 
         <div class="form-group">
-            <label for="test">Text</label>
-            <textarea class="form-control rounded-0" id="textarea" rows="5"></textarea>
+            <textarea class="form-control rounded-0" name="post-submit" rows="5"></textarea>
+            <small class="form-text text-muted">Text</small>
         </div><!-- /form-group -->
 
         <button type="submit" class="btn btn-primary">Submit</button>

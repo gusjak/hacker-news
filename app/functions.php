@@ -15,7 +15,7 @@ function loggedIn(): bool
     return isset($_SESSION['user']);
 }
 
-// Function to pair the current user with an ID.
+// Function to pair the current user with an ID. (So users can edit only their own profile settings.)
 function getUserById(int $id, object $pdo): array
 {
     $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
@@ -27,7 +27,7 @@ function getUserById(int $id, object $pdo): array
     $statement->execute([':id' => $id]);
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-    if (!$user) {
+    if ($user) {
         return $user;
     }
 }
