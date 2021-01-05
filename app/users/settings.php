@@ -12,7 +12,6 @@ if (loggedIn()) {
     if ($_POST['edit-first-name'] == '') {
         $firstName = $_SESSION['user']['first_name'];
     } else {
-
         $statement = $pdo->prepare('UPDATE users SET first_name = :first_name WHERE id = :id');
 
         if (!$statement) {
@@ -29,7 +28,6 @@ if (loggedIn()) {
     if ($_POST['edit-last-name'] == '') {
         $lastName = $_SESSION['user']['last_name'];
     } else {
-
         $statement = $pdo->prepare('UPDATE users SET last_name = :last_name WHERE id = :id');
 
         if (!$statement) {
