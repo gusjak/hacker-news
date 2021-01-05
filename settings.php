@@ -16,15 +16,19 @@ $id = (int) $_SESSION['user']['id'];
     <p><?php $message ?>
     <h2><?php echo $_SESSION['user']['username']; ?>'s profile settings.</h2>
 
+    <br>
+
     <?php if (loggedIn()) : ?>
-        <img loading="lazy" src="<?= '/app/users/images/' . $user['avatar'] ?>" alt="user-avatar">
+        <img loading="lazy" src="<?= '/app/users/images/' . $user['avatar'] ?>" alt="user-avatar" width="100px">
     <?php endif; ?>
 
-    <form action="" method="post" enctype="multipart/form-data">
+    <br>
+
+    <form action="app/users/updateavatar.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
-            <label for="user-avatar">Change profile avatar</label>
-            <input type="file" accept="image/jpg, image/jpeg, image/png" name="user-avatar" required>
+            <label for="avatar">Change profile avatar</label>
             <small class="form-text text-muted">Accepted formats are jpg, jpeg & png.</small>
+            <input type="file" accept=".jpg, .jpeg, .png" name="avatar" required>
         </div>
 
         <button type="submit" class="btn btn-secondary">Upload image</button>
