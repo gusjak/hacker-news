@@ -60,19 +60,19 @@ $id = (int) $_SESSION['user']['id'];
     <br>
 
     <h3>Change email</h3>
-    <form action="/" method="post" enctype="multipart/form-data">
+    <form action="app/users/updateemail.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
-            <input class="form-control" type="email" name="email" id="email">
+            <input class="form-control" type="email" name="current-email" placeholder="<?= $user['email'] ?>">
             <small class="form-text text-muted">Current Email</small>
         </div><!-- /form-group -->
 
         <div class="form-group">
-            <input class="form-control" type="email" name="email" id="email">
+            <input class="form-control" type="email" name="new-email">
             <small class="form-text text-muted">New Email</small>
         </div><!-- /form-group -->
 
         <div class="form-group">
-            <input class="form-control" type="email" name="email" id="email">
+            <input class="form-control" type="email" name="comfirm-email">
             <small class="form-text text-muted">Comfirm New Email</small>
         </div><!-- /form-group -->
 
