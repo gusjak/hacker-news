@@ -23,7 +23,7 @@ if (isset($_POST['email'], $_POST['username'], $_POST['password'])) {
         redirect('/register.php');
     }
 
-    if ($_POST['password'] !== $_POST['comfirm_password']) {
+    if ($_POST['password'] !== $_POST['comfirm-password']) {
         $_SESSION['message'] = 'Your passwords doesn\'t match, please try again.';
         redirect('/register.php');
     }

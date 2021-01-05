@@ -59,7 +59,7 @@ $id = (int) $_SESSION['user']['id'];
 
     <br>
 
-    <h3>Change password</h3>
+    <h3>Change email</h3>
     <form action="/" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <input class="form-control" type="email" name="email" id="email">
@@ -82,19 +82,19 @@ $id = (int) $_SESSION['user']['id'];
     <br>
 
     <h3>Change password</h3>
-    <form action="/" method="post" enctype="multipart/form-data">
+    <form action="app/users/updatepassword.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
-            <input class="form-control" type="password" name="password" id="password">
+            <input class="form-control" type="password" name="current-password" id="password">
             <small class="form-text text-muted">Current Password</small>
         </div><!-- /form-group -->
 
         <div class="form-group">
-            <input class="form-control" type="password" name="password" id="password">
+            <input class="form-control" type="password" name="new-password" id="password">
             <small class="form-text text-muted">New Password</small>
         </div><!-- /form-group -->
 
         <div class="form-group">
-            <input class="form-control" type="password" name="comfirm_password" id="password">
+            <input class="form-control" type="password" name="comfirm-password" id="password">
             <small class="form-text text-muted">Comfirm New Password</small>
         </div><!-- /form-group -->
 
