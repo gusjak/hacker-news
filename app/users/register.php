@@ -9,6 +9,10 @@ if (isset($_POST['email'], $_POST['username'], $_POST['password'])) {
     $email = trim(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL));
     $username = trim(filter_var($_POST['username'], FILTER_SANITIZE_STRING));
 
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['message'] = 'The email is not a valid email address.';
+    }
+
     if (existingEmail($email, $pdo)) {
         $_SESSION['message'] = 'This email is already in use.';
         redirect('/register.php');
@@ -25,9 +29,14 @@ if (isset($_POST['email'], $_POST['username'], $_POST['password'])) {
     }
 
     $password = trim(password_hash($_POST['password'], PASSWORD_BCRYPT));
+    $firstName = 'First Name';
+    $lastName = 'Last Name';
+    $userAvatar = 'placeholder.png';
+    $biography = 'Write something short about yourself.';
 
-    $query = 'INSERT INTO users (email, username, password) VALUES (:email, :username, :password)';
-    $statement = $pdo->prepare($query);
+    // $query = 'INSERT INTO users (email, username, password, first_name, last_name, avatar, biography) VALUES (:email, :username, :password, :first_name, :last_name, :avatar, :biography)';
+    $statement = $pdo->prepare('INSERT INTO users (email, username, password, first_name, last_name, avatar, biography) 
+                                VALUES (:email, :username, :password, :first_name, :last_name, :avatar, :biography)');
 
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
@@ -36,6 +45,10 @@ if (isset($_POST['email'], $_POST['username'], $_POST['password'])) {
     $statement->bindParam(':email', $email, PDO::PARAM_STR);
     $statement->bindParam(':username', $username, PDO::PARAM_STR);
     $statement->bindParam(':password', $password, PDO::PARAM_STR);
+    $statement->bindParam(':first_name', $firstName, PDO::PARAM_STR);
+    $statement->bindParam(':last_name', $lastName, PDO::PARAM_STR);
+    $statement->bindParam(':avatar', $userAvatar, PDO::PARAM_STR);
+    $statement->bindParam(':biography', $biography, PDO::PARAM_STR);
     $statement->execute();
 
     $_SESSION['message'] = 'Succesfully created account. You may now log in.';

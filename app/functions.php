@@ -15,6 +15,23 @@ function loggedIn(): bool
     return isset($_SESSION['user']);
 }
 
+// Function to pair the current user with an ID.
+function getUserById(int $id, object $pdo): array
+{
+    $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
+
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+
+    $statement->execute([':id' => $id]);
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+    if (!$user) {
+        return $user;
+    }
+}
+
 // Function to verify the id of a user. (To edit profile/posts).
 function isUser($user): bool
 {
