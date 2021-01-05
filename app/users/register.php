@@ -34,7 +34,6 @@ if (isset($_POST['email'], $_POST['username'], $_POST['password'])) {
     $userAvatar = 'placeholder.png';
     $biography = 'Write something short about yourself.';
 
-    // $query = 'INSERT INTO users (email, username, password, first_name, last_name, avatar, biography) VALUES (:email, :username, :password, :first_name, :last_name, :avatar, :biography)';
     $statement = $pdo->prepare('INSERT INTO users (email, username, password, first_name, last_name, avatar, biography) 
                                 VALUES (:email, :username, :password, :first_name, :last_name, :avatar, :biography)');
 

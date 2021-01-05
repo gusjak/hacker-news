@@ -49,7 +49,7 @@ $id = (int) $_SESSION['user']['id'];
     <br>
 
     <h3>About</h3>
-    <form action="/" method="post" enctype="multipart/form-data">
+    <form action="app/users/settings.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <textarea class="form-control rounded-0" name="biography" placeholder="<?= $user['biography'] ?>" rows="10"></textarea>
         </div><!-- /form-group -->
