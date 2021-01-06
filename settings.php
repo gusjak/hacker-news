@@ -13,8 +13,9 @@ $id = (int) $_SESSION['user']['id'];
 ?>
 
 <article>
-    <p><?php $message ?>
-    <h2><?php echo $_SESSION['user']['username']; ?>'s profile settings.</h2>
+    <p><?php $message ?></p>
+
+    <h4>Username: <?= $user['username'] ?></h4>
 
     <br>
 
@@ -23,28 +24,30 @@ $id = (int) $_SESSION['user']['id'];
     <?php endif; ?>
 
     <br>
+    <br>
 
     <form action="app/users/updateavatar.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
-            <label for="avatar">Change profile avatar</label>
-            <small class="form-text text-muted">Accepted formats are jpg, jpeg & png.</small>
             <input type="file" accept=".jpg, .jpeg, .png" name="avatar" required>
+            <small class="form-text text-muted">Accepted formats are jpg, jpeg & png.</small>
         </div>
 
-        <button type="submit" class="btn btn-secondary">Upload image</button>
+        <button type="submit" class="btn btn-secondary">Save changes</button>
     </form>
 
     <br>
 
     <form action="app/users/settings.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
+            <small class="form-text text-muted">First name</small>
             <input class="form-control" type="text" name="edit-first-name" placeholder="<?= $user['first_name'] ?>">
-            <small class="form-text text-muted">Change first name</small>
+            <small class="form-text text-muted">You may change this by filling out this field.</small>
         </div><!-- /form-group -->
 
         <div class="form-group">
+            <small class="form-text text-muted">Last name</small>
             <input class="form-control" type="text" name="edit-last-name" placeholder="<?= $user['last_name'] ?>">
-            <small class="form-text text-muted">Change last name</small>
+            <small class="form-text text-muted">You may change this by filling out this field.</small>
         </div><!-- /form-group -->
 
         <button type="submit" class="btn btn-secondary">Save changes</button>
@@ -56,6 +59,7 @@ $id = (int) $_SESSION['user']['id'];
     <form action="app/users/settings.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <textarea class="form-control rounded-0" name="biography" placeholder="<?= $user['biography'] ?>" rows="10"></textarea>
+            <small class="form-text text-muted">You may change this by filling out this field.</small>
         </div><!-- /form-group -->
 
         <button type="submit" class="btn btn-secondary">Save changes</button>

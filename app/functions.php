@@ -9,6 +9,8 @@ function redirect(string $path)
     exit;
 }
 
+// USER RELATED FUNCTIONS
+
 // Function to verify if the user is logged in.
 function loggedIn(): bool
 {
@@ -72,4 +74,29 @@ function existingUser(string $username, object $pdo): bool
     }
 
     return false;
+}
+
+
+// POST RELATED FUNCTIONS
+
+// Function to sort posts in descending order.
+function sortByDate(array $a, array $b)
+{
+    return ($a['id'] < $b['id']);
+}
+
+// Function to return all posts from all users.
+function displayAllPosts(object $pdo): array
+{
+    $statement = $pdo->prepare('SELECT posts.id, title, url, text, user_id, date, username, avatar
+                                FROM posts
+                                INNER JOIN users
+                                ON posts.user_id = users.id
+                                ORDER BY posts.id DESC');
+
+    $statement->execute();
+
+    $allPosts = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    return $allPosts;
 }
