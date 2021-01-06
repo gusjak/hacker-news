@@ -92,7 +92,7 @@ function displayAllPosts(object $pdo): array
                                 FROM posts
                                 INNER JOIN users
                                 ON posts.user_id = users.id
-                                ORDER BY posts.id DESC');
+                                ORDER BY posts.date DESC');
 
     $statement->execute();
 

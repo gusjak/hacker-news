@@ -1,16 +1,24 @@
 <?php require __DIR__ . '/app/autoload.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
 
+<?php
+$allPosts = displayAllPosts($pdo);
+?>
+
 
 <article>
-    <h1><?php echo $config['title']; ?></h1>
-    <p><?php $message ?><p>
-            <p>This is the homepage section with the top rated posts.</p>
+    <?php foreach ($allPosts as $post) : ?>
+        <?php $authorID = $post['user_id']; ?>
+        <img loading="lazy" src="<?= '/app/users/images/' . $post['avatar'] ?>" alt="user-avatar" width="50px">
+        <small class="form-text text-muted"><?php echo $post['username'] ?></small>
+        <a href="#"><?php echo $post['url'] ?></a>
+        <p><?php echo $post['text'] ?></p>
+        <small class="form-text text-muted">Posted: <?php echo $post['date'] . "\n"; ?>
             <?php if (loggedIn()) : ?>
-                <p>Welcome, <?php echo $_SESSION['user']['username']; ?>!</p>
-            <?php else : ?>
-                <p>Welcome, guest!</p>
-            <?php endif; ?>
+                <a href="">Comment</a>
+            <?php endif; ?></small>
+        <br>
+    <?php endforeach; ?>
 </article>
 
 <?php require __DIR__ . '/views/footer.php'; ?>
