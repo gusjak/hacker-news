@@ -100,3 +100,18 @@ function displayAllPosts(object $pdo): array
 
     return $allPosts;
 }
+
+// Function to return all posts from one user.
+function displayUserPosts(int $id, object $pdo): array
+{
+    $statement = $pdo->prepare('SELECT *
+                                FROM posts
+                                WHERE user_id = :user_id');
+
+    $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
+    $statement->execute();
+
+    $userPosts = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    return $userPosts;
+}
