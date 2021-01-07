@@ -22,7 +22,7 @@ You're going to create a [Hacker News](https://news.ycombinator.com/news) clone.
 
 - [x] As a user I should be able to upload a profile avatar image.
 
-- [ ] As a user I should be able to create new posts with title, link and description.
+- [x] As a user I should be able to create new posts with title, link and description.
 
 - [ ] As a user I should be able to edit my posts.
 

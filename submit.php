@@ -17,7 +17,7 @@
 
         <div class="form-group">
             <small class="form-text text-muted">Text</small>
-            <textarea class="form-control rounded-0" name="post-submit" rows="5"></textarea>
+            <textarea class="form-control rounded-0" name="text-content" rows="5"></textarea>
         </div><!-- /form-group -->
 
         <button type="submit" class="btn btn-primary">Submit</button>
