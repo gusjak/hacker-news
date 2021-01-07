@@ -2,12 +2,6 @@
 <?php require __DIR__ . '/views/header.php'; ?>
 
 <?php
-if (!isset($_SESSION['user'])) :
-    redirect('/');
-endif;
-?>
-
-<?php
 $user = getUserById($_SESSION['user']['id'], $pdo);
 $id = (int) $_SESSION['user']['id'];
 ?>

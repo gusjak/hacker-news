@@ -7,12 +7,16 @@
         </li><!-- /nav-item -->
 
         <li class="nav-item">
-            <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/past.php' ? 'active' : ''; ?>" href="/past.php">Past</a>
+            <?php if (isset($_SESSION['user'])) : ?>
+                <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/submit.php' ? 'active' : ''; ?>" href="/submit.php">Submit</a>
+            <?php else : ?>
+                <!-- Hide submit nav-item if user is nog logged in -->
+            <?php endif; ?>
         </li><!-- /nav-item -->
 
         <li class="nav-item">
             <?php if (isset($_SESSION['user'])) : ?>
-                <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/submit.php' ? 'active' : ''; ?>" href="/submit.php">Submit</a>
+                <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/posts.php' ? 'active' : ''; ?>" href="/posts.php">Your Posts</a>
             <?php else : ?>
                 <!-- Hide submit nav-item if user is nog logged in -->
             <?php endif; ?>
