@@ -21,12 +21,8 @@ function loggedIn(): bool
 function getUserById(int $id, object $pdo): array
 {
     $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
-
-    if (!$statement) {
-        die(var_dump($pdo->errorInfo()));
-    }
-
-    $statement->execute([':id' => $id]);
+    $statement->bindParam(':id', $id, PDO::PARAM_INT);
+    $statement->execute();
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
     if ($user) {
