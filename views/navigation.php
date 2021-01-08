@@ -16,7 +16,7 @@
 
         <li class="nav-item">
             <?php if (isset($_SESSION['user'])) : ?>
-                <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/userposts.php' ? 'active' : ''; ?>" href="/userposts.php">Your Posts</a>
+                <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/userposts.php' ? 'active' : ''; ?>" href="/userposts.php">My Posts</a>
             <?php else : ?>
                 <!-- Hide submit nav-item if user is nog logged in -->
             <?php endif; ?>

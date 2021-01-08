@@ -114,3 +114,16 @@ function displayUserPosts(int $id, object $pdo): array
 
     return $userPosts;
 }
+
+// Function to pair the current post with an ID. (So users can edit only their own posts.)
+function getPostById(int $id, object $pdo): array
+{
+    $statement = $pdo->prepare('SELECT * FROM posts WHERE id = :id');
+    $statement->bindParam(':id', $id, PDO::PARAM_INT);
+    $statement->execute();
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+    if ($user) {
+        return $user;
+    }
+}

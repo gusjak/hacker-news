@@ -9,12 +9,12 @@ $id = (int) $_SESSION['user']['id'];
 <article>
     <p><?php $message ?></p>
 
-    <h4>Username: <?= $user['username'] ?></h4>
+    <h4>Username: <?php echo $user['username'] ?></h4>
 
     <br>
 
     <?php if (loggedIn()) : ?>
-        <img loading="lazy" src="<?= '/app/users/images/' . $user['avatar'] ?>" alt="user-avatar" width="100px">
+        <img loading="lazy" src="<?php echo '/app/users/images/' . $user['avatar'] ?>" alt="user-avatar" width="100px">
     <?php endif; ?>
 
     <br>
@@ -34,13 +34,13 @@ $id = (int) $_SESSION['user']['id'];
     <form action="app/users/settings.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <small class="form-text text-muted">First name</small>
-            <input class="form-control" type="text" name="edit-first-name" placeholder="<?= $user['first_name'] ?>">
+            <input class="form-control" type="text" name="edit-first-name" placeholder="<?php echo $user['first_name'] ?>">
             <small class="form-text text-muted">You may change this by filling out this field.</small>
         </div><!-- /form-group -->
 
         <div class="form-group">
             <small class="form-text text-muted">Last name</small>
-            <input class="form-control" type="text" name="edit-last-name" placeholder="<?= $user['last_name'] ?>">
+            <input class="form-control" type="text" name="edit-last-name" placeholder="<?php echo $user['last_name'] ?>">
             <small class="form-text text-muted">You may change this by filling out this field.</small>
         </div><!-- /form-group -->
 
@@ -52,7 +52,7 @@ $id = (int) $_SESSION['user']['id'];
     <h3>About</h3>
     <form action="app/users/settings.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
-            <textarea class="form-control rounded-0" name="biography" placeholder="<?= $user['biography'] ?>" rows="10"></textarea>
+            <textarea class="form-control rounded-0" name="biography" placeholder="<?php echo $user['biography'] ?>" rows="10"></textarea>
             <small class="form-text text-muted">You may change this by filling out this field.</small>
         </div><!-- /form-group -->
 
@@ -64,7 +64,7 @@ $id = (int) $_SESSION['user']['id'];
     <h3>Change email</h3>
     <form action="app/users/updateemail.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
-            <input class="form-control" type="email" name="current-email" placeholder="<?= $user['email'] ?>">
+            <input class="form-control" type="email" name="current-email" placeholder="<?php echo $user['email'] ?>">
             <small class="form-text text-muted">Current Email</small>
         </div><!-- /form-group -->
 
