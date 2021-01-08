@@ -100,9 +100,12 @@ function displayAllPosts(object $pdo): array
 // Function to return all posts from one user.
 function displayUserPosts(int $id, object $pdo): array
 {
-    $statement = $pdo->prepare('SELECT *
+    $statement = $pdo->prepare('SELECT *, users.username, users.avatar
                                 FROM posts
-                                WHERE user_id = :user_id');
+                                INNER JOIN users
+                                ON posts.user_id = users.id
+                                WHERE user_id = :user_id
+                                ORDER BY posts.date DESC');
 
     $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
     $statement->execute();
