@@ -24,13 +24,13 @@ You're going to create a [Hacker News](https://news.ycombinator.com/news) clone.
 
 - [x] As a user I should be able to create new posts with title, link and description.
 
-- [ ] As a user I should be able to edit my posts.
+- [x] As a user I should be able to edit my posts.
 
-- [ ] As a user I should be able to delete my posts.
+- [x] As a user I should be able to delete my posts.
 
 - [ ] As a user I'm able to view most upvoted posts.
 
-- [ ] As a user I'm able to view new posts.
+- [x] As a user I'm able to view new posts.
 
 - [ ] As a user I should be able to upvote posts.
 

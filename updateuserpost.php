@@ -6,7 +6,7 @@ $postId = getPostById($_POST['postid'], $pdo);
 ?>
 
 <article>
-    <h4>Here you may edit your post "<?php echo $_POST['postid']; ?>".</h4>
+    <h4>Here you may edit your post "<?php echo $postId['title']; ?>".</h4>
 
     <br>
 
@@ -30,6 +30,11 @@ $postId = getPostById($_POST['postid'], $pdo);
         </div><!-- /form-group -->
 
         <button type="submit" name="submit" class="btn btn-primary">Edit Post</button>
+    </form>
+    <br>
+    <form action="app/posts/delete.php" method="post">
+        <input type="hidden" name="postid" value="<?php echo $_POST['postid']; ?>">
+        <button type="submit" name="submit" class="btn btn-danger">Delete Post</button>
     </form>
 </article>
 
