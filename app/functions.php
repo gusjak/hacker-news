@@ -127,3 +127,32 @@ function getPostById(int $id, object $pdo): array
         return $user;
     }
 }
+
+// Function to count upvotes
+function countUpvotes(int $postId, object $pdo): string
+{
+    $statement = $pdo->prepare('SELECT COUNT(*) FROM upvotes WHERE post_id = :post_id');
+
+    $statement->bindParam(':post_id', $postId, PDO::PARAM_INT);
+
+    $statement->execute();
+
+    $upvotes = $statement->fetch(PDO::FETCH_ASSOC);
+
+    return $upvotes['COUNT(*)'];
+}
+
+// Function to determine if user already upvoted post.
+function alreadyUpvoted(int $postId, int $userId, object $pdo): bool
+{
+    $statement = $pdo->prepare('SELECT * FROM upvotes WHERE post_id = :post_id AND user_id = :user_id');
+
+    $statement->bindParam(':post_id', $postId, PDO::PARAM_INT);
+    $statement->bindParam(':user_id', $userId, PDO::PARAM_INT);
+
+    $statement->execute();
+
+    $alreadyUpvoted = $statement->fetch(PDO::FETCH_ASSOC);
+
+    return $alreadyUpvoted ? true : false;
+}

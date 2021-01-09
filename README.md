@@ -32,9 +32,9 @@ You're going to create a [Hacker News](https://news.ycombinator.com/news) clone.
 
 - [x] As a user I'm able to view new posts.
 
-- [ ] As a user I should be able to upvote posts.
+- [x] As a user I should be able to upvote posts.
 
-- [ ] As a user I should be able to remove upvote from posts.
+- [x] As a user I should be able to remove upvote from posts.
 
 - [ ] As a user I'm able to comment on a post.
 
