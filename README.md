@@ -38,9 +38,9 @@ You're going to create a [Hacker News](https://news.ycombinator.com/news) clone.
 
 - [x] As a user I'm able to comment on a post.
 
-- [ ] As a user I'm able to edit my comments.
+- [x] As a user I'm able to edit my comments.
 
-- [ ] As a user I'm able to delete my comments.
+- [x] As a user I'm able to delete my comments.
 
 <br>
 

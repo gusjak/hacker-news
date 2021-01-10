@@ -33,14 +33,14 @@
                 </form>
             <?php endif; ?>
             <small class="form-text text-muted">Posted: <?php echo $post['date']; ?></small>
-            <form action="" method="post">
-                <button class="btn btn-link" type="submit" name="submit">Comment</button>
+            <form action="/post.php" method="post">
+                <button class="btn btn-link" type="submit" name="submit">Comments</button>
                 <input type="hidden" name="postid" value="<?php echo $post['id']; ?>">
             </form>
 
             <?php if ($currentUserId === $userPostId) : ?>
                 <form action="/updateuserpost.php" method="post">
-                    <button class="btn btn-link" type="submit" name="submit">Edit</button>
+                    <button class="btn btn-link" type="submit" name="submit">Edit Post</button>
                     <input type="hidden" name="postid" value="<?php echo $post['id']; ?>">
                 </form>
             <?php endif; ?>

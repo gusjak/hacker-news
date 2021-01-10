@@ -186,3 +186,16 @@ function getComments(int $postId, PDO $pdo): array
     $statement->execute();
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
+
+// Function to pair the current comment with an ID. (So users can edit only their own comments.)
+function getCommentById(int $id, object $pdo): array
+{
+    $statement = $pdo->prepare('SELECT * FROM comments WHERE id = :id');
+    $statement->bindParam(':id', $id, PDO::PARAM_INT);
+    $statement->execute();
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+    if ($user) {
+        return $user;
+    }
+}
