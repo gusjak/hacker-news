@@ -2,7 +2,7 @@
 <?php require __DIR__ . '/views/header.php'; ?>
 
 <?php
-$comments = getComments($_POST['postid'], $pdo,);
+$comments = getComments($_POST['postid'], $pdo);
 ?>
 
 <?php if (loggedIn()) : ?>
