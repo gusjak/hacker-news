@@ -1,7 +1,7 @@
 <?php require __DIR__ . '/app/autoload.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
 
-<?php $allPosts = displayAllPosts($pdo); ?>
+<?php $allPosts = sortByUpvotes($pdo); ?>
 
 <?php if (loggedIn()) : ?>
     <article>
@@ -14,7 +14,7 @@
             <?php $userPostId = $post['user_id']; ?>
             <?php $upvotes = countUpvotes($post['id'], $pdo); ?>
             <?php $alreadyUpvoted = alreadyUpvoted($post['id'], $currentUserId, $pdo); ?>
-            <img loading="lazy" src="<?= '/app/users/images/' . $post['avatar'] ?>" alt="user-avatar" width="50px">
+            <img loading="lazy" src="<?php echo '/app/users/images/' . $post['avatar'] ?>" alt="user-avatar" width="50px">
             <small class="form-text text-muted"><?php echo $post['username'] ?></small>
             <br>
             <h6><strong><?php echo $post['title'] ?></strong></h6>
@@ -33,7 +33,7 @@
                 </form>
             <?php endif; ?>
             <small class="form-text text-muted">Posted: <?php echo $post['date']; ?></small>
-            <form action="" method="post">
+            <form action="/post.php" method="post">
                 <button class="btn btn-link" type="submit" name="submit">Comment</button>
                 <input type="hidden" name="postid" value="<?php echo $post['id']; ?>">
             </form>

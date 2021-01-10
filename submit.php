@@ -2,6 +2,7 @@
 <?php require __DIR__ . '/views/header.php'; ?>
 
 <article>
+    <p><?php $message ?></p>
     <h1>Submit</h1>
 
     <form action="app/posts/store.php" method="post">

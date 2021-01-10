@@ -75,13 +75,7 @@ function existingUser(string $username, object $pdo): bool
 
 // POST RELATED FUNCTIONS
 
-// Function to sort posts in descending order.
-function sortByDate(array $a, array $b)
-{
-    return ($a['id'] < $b['id']);
-}
-
-// Function to return all posts from all users.
+// Function to return all posts from all users in descending order.
 function displayAllPosts(object $pdo): array
 {
     $statement = $pdo->prepare('SELECT posts.id, title, url, text, user_id, date, username, avatar
@@ -97,7 +91,7 @@ function displayAllPosts(object $pdo): array
     return $allPosts;
 }
 
-// Function to return all posts from one user.
+// Function to return all posts from one user in descending order.
 function displayUserPosts(int $id, object $pdo): array
 {
     $statement = $pdo->prepare('SELECT *, users.username, users.avatar
@@ -155,4 +149,40 @@ function alreadyUpvoted(int $postId, int $userId, object $pdo): bool
     $alreadyUpvoted = $statement->fetch(PDO::FETCH_ASSOC);
 
     return $alreadyUpvoted ? true : false;
+}
+
+// Function to sort posts by most upvoted.
+function sortByUpvotes(object $pdo): array
+{
+    $statement = $pdo->prepare('SELECT COUNT(upvotes.post_id) as upvotes, posts.id, posts.title, posts.url, posts.text, posts.user_id, posts.date, users.username, users.avatar
+                                FROM upvotes
+                                INNER JOIN posts
+                                ON upvotes.post_id = posts.id
+                                INNER JOIN users
+                                ON posts.user_id = users.id
+                                GROUP BY upvotes.post_id
+                                ORDER BY upvotes DESC');
+    $statement->execute();
+
+    $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    return $posts;
+}
+
+
+// COMMENT RELATED FUNCTIONS
+
+// Function to display comments.
+function getComments(int $postId, PDO $pdo): array
+{
+    $statement = $pdo->prepare('SELECT comments.id, comments.user_id, comments.post_id, comments.content, comments.date, users.username, users.avatar
+                                FROM comments
+                                INNER JOIN users
+                                ON comments.user_id = users.id
+                                WHERE comments.post_id = :id
+                                ORDER BY comments.date DESC');
+
+    $statement->bindParam(':id', $postId, PDO::PARAM_STR);
+    $statement->execute();
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
 }

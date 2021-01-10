@@ -28,7 +28,7 @@ You're going to create a [Hacker News](https://news.ycombinator.com/news) clone.
 
 - [x] As a user I should be able to delete my posts.
 
-- [ ] As a user I'm able to view most upvoted posts.
+- [x] As a user I'm able to view most upvoted posts.
 
 - [x] As a user I'm able to view new posts.
 
@@ -36,7 +36,7 @@ You're going to create a [Hacker News](https://news.ycombinator.com/news) clone.
 
 - [x] As a user I should be able to remove upvote from posts.
 
-- [ ] As a user I'm able to comment on a post.
+- [x] As a user I'm able to comment on a post.
 
 - [ ] As a user I'm able to edit my comments.
 
