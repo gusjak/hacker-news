@@ -76,7 +76,7 @@ function existingUser(string $username, object $pdo): bool
 // POST RELATED FUNCTIONS
 
 // Function to return all posts from all users in descending order.
-function displayAllPosts(object $pdo): array
+function getAllPosts(object $pdo): array
 {
     $statement = $pdo->prepare('SELECT posts.id, title, url, text, user_id, date, username, avatar
                                 FROM posts
@@ -92,16 +92,11 @@ function displayAllPosts(object $pdo): array
 }
 
 // Function to return all posts from one user in descending order.
-function displayUserPosts(int $id, object $pdo): array
+function getUserPosts(int $id, object $pdo): array
 {
-    $statement = $pdo->prepare('SELECT *, users.username, users.avatar
-                                FROM posts
-                                INNER JOIN users
-                                ON posts.user_id = users.id
-                                WHERE user_id = :user_id
-                                ORDER BY posts.date DESC');
-
+    $statement = $pdo->prepare('SELECT * FROM posts WHERE user_id = :user_id ORDER BY id DESC');
     $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
+
     $statement->execute();
 
     $userPosts = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -112,15 +107,23 @@ function displayUserPosts(int $id, object $pdo): array
 // Function to pair the current post with an ID. (So users can edit only their own posts.)
 function getPostById(int $id, object $pdo): array
 {
-    $statement = $pdo->prepare('SELECT * FROM posts WHERE id = :id');
-    $statement->bindParam(':id', $id, PDO::PARAM_INT);
-    $statement->execute();
-    $user = $statement->fetch(PDO::FETCH_ASSOC);
+    $statement = $pdo->prepare('SELECT posts.id, posts.title, posts.url, posts.text, posts.user_id, posts.date, users.avatar, users.username
+                                FROM posts
+                                INNER JOIN users
+                                ON posts.user_id = users.id
+                                WHERE posts.id = :post_id LIMIT 1');
 
-    if ($user) {
-        return $user;
+    $statement->bindParam(':post_id', $id, PDO::PARAM_INT);
+    $statement->execute();
+
+    $post = $statement->fetch(PDO::FETCH_ASSOC);
+
+    if ($post) {
+        return $post;
     }
 }
+
+// UPVOTE FUNCTIONS
 
 // Function to count upvotes
 function countUpvotes(int $postId, object $pdo): string
@@ -164,25 +167,25 @@ function sortByUpvotes(object $pdo): array
                                 ORDER BY upvotes DESC');
     $statement->execute();
 
-    $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $upvotedPosts = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    return $posts;
+    return $upvotedPosts;
 }
 
 
 // COMMENT RELATED FUNCTIONS
 
 // Function to display comments.
-function getComments(int $postId, PDO $pdo): array
+function getComments(int $id, PDO $pdo): array
 {
-    $statement = $pdo->prepare('SELECT comments.id, comments.user_id, comments.post_id, comments.content, comments.date, users.username, users.avatar
+    $statement = $pdo->prepare('SELECT comments.id, comments.post_id, comments.user_id, comments.content, comments.date, users.avatar, users.username
                                 FROM comments
                                 INNER JOIN users
                                 ON comments.user_id = users.id
-                                WHERE comments.post_id = :id
-                                ORDER BY comments.date DESC');
+                                WHERE comments.post_id = :post_id
+                                ORDER BY comments.id DESC');
 
-    $statement->bindParam(':id', $postId, PDO::PARAM_STR);
+    $statement->bindParam(':post_id', $id, PDO::PARAM_INT);
     $statement->execute();
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -190,12 +193,27 @@ function getComments(int $postId, PDO $pdo): array
 // Function to pair the current comment with an ID. (So users can edit only their own comments.)
 function getCommentById(int $id, object $pdo): array
 {
-    $statement = $pdo->prepare('SELECT * FROM comments WHERE id = :id');
-    $statement->bindParam(':id', $id, PDO::PARAM_INT);
-    $statement->execute();
-    $user = $statement->fetch(PDO::FETCH_ASSOC);
+    $statement = $pdo->prepare('SELECT comments.id, comments.post_id, comments.user_id, comments.content, comments.date, users.avatar, users.username
+    FROM comments
+    INNER JOIN users
+    ON comments.user_id = users.id
+    WHERE comments.post_id = :post_id
+    ORDER BY comments.id DESC
+    LIMIT 1');
 
-    if ($user) {
-        return $user;
-    }
+    $statement->bindParam(':post_id', $id, PDO::PARAM_INT);
+    $statement->execute();
+    $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $comments;
+}
+
+function countNumberOfComments(int $postId, object $pdo)
+{
+    $statement = $pdo->prepare('SELECT COUNT(*) FROM comments WHERE post_id = :postId');
+    $statement->bindParam(':postId', $postId, PDO::PARAM_INT);
+    $statement->execute();
+
+    $numberOfComments = $statement->fetch();
+
+    return $numberOfComments['COUNT(*)'];
 }

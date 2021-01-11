@@ -16,7 +16,7 @@
 
         <li class="nav-item">
             <?php if (isset($_SESSION['user'])) : ?>
-                <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/userposts.php' ? 'active' : ''; ?>" href="/userposts.php">My Posts</a>
+                <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/userposts.php' ? 'active' : ''; ?>" href="/userposts.php?id=<?php echo $_SESSION['user']['id'] ?>">My Posts</a>
             <?php else : ?>
                 <!-- Hide submit nav-item if user is nog logged in -->
             <?php endif; ?>
@@ -32,7 +32,7 @@
 
         <li class="nav-item">
             <?php if (isset($_SESSION['user'])) : ?>
-                <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/settings.php' ? 'active' : ''; ?>" href="/settings.php">Settings</a>
+                <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/settings.php' ? 'active' : ''; ?>" href="/settings.php?id=<?php echo $_SESSION['user']['id'] ?>">Settings</a>
             <?php else : ?>
                 <!-- Hide profile nav-item if user is nog logged in -->
             <?php endif; ?>

@@ -2,24 +2,20 @@
 <?php require __DIR__ . '/views/header.php'; ?>
 
 <?php
-$postId = getCommentById($_POST['postid'], $pdo);
+$postId = $_GET['id'];
+$post = getPostById($postId, $pdo);
+$comments = getCommentById($postId, $pdo);
 ?>
 
-<article>
-    <h4>Here you may edit your comment.</h4>
+<article class="comments">
+    <?php foreach ($comments as $comment) : ?>
+        <form action="/app/comments/update.php?id=<?php echo $comment['post_id']; ?>&comment-id=<?php echo $comment['id']; ?>" method="post">
+            <div class="form-group">
+                <textarea class="form-control" type="text" name="edit-comment" rows="5" cols="10" required><?php echo $comment['content']; ?></textarea>
+                <small class="form-text text-muted">You may change the text by filling out this field.</small>
+            </div><!-- /form-group -->
+            <button type="submit" class="btn btn-primary">Edit Comment</button>
+        </form>
+    <?php endforeach; ?>
 
-    <br>
-
-    <form action="app/comments/update.php" method="post">
-        <input type="hidden" name="postid" value="<?php echo $_POST['postid']; ?>">
-
-        <div class="form-group">
-            <textarea class="form-control rounded-0" name="edit-comment" placeholder="<?php echo $postId['content'] ?>" rows=" 5"></textarea>
-            <small class="form-text text-muted">You may change this by filling out this field.</small>
-        </div><!-- /form-group -->
-
-        <button type="submit" name="submit" class="btn btn-primary">Edit Post</button>
-    </form>
-</article>
-
-<?php require __DIR__ . '/views/footer.php'; ?>
+    <?php require __DIR__ . '/views/footer.php'; ?>

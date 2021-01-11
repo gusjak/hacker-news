@@ -5,17 +5,20 @@ declare(strict_types=1);
 require __DIR__ . '/../autoload.php';
 
 // In this file we edit new posts in the database.
-if (loggedIn() && isset($_POST['submit'])) {
-    $id = $_POST['postid'];
-    $editComment = trim(filter_var($_POST['edit-comment'], FILTER_SANITIZE_STRING));
+if (LoggedIn() && isset($_POST['edit-comment'])) {
+    $userId = $_SESSION['user']['id'];
+    $postId = $_GET['id'];
+    $commentId = $_GET['comment-id'];
+    $editComment = filter_var($_POST['edit-comment'], FILTER_SANITIZE_STRING);
 
-    $statement = $pdo->prepare('UPDATE comments SET content = :content WHERE id = :id');
+    $statement = $pdo->prepare('UPDATE comments SET content = :content WHERE id = :comment_id AND user_id = :user_id AND post_id = :post_id');
     $statement->bindParam(':content', $editComment, PDO::PARAM_STR);
-    $statement->bindParam(':id', $id, PDO::PARAM_INT);
-
+    $statement->bindParam(':post_id', $postId, PDO::PARAM_INT);
+    $statement->bindParam(':comment_id', $commentId, PDO::PARAM_INT);
+    $statement->bindParam(':user_id', $userId, PDO::PARAM_INT);
     $statement->execute();
 
     $_SESSION['message'] = 'Your comment has been updated.';
-}
 
-redirect('/index.php');
+    redirect('/post.php?id=' . $postId);
+}

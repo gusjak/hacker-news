@@ -1,1 +1,5 @@
 /* In this file you can add your custom styles. */
+.btn-link {
+  font-size: 12px;
+  margin-left: -12px;
+}
