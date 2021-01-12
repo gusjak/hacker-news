@@ -91,6 +91,24 @@ function getAllPosts(object $pdo): array
     return $allPosts;
 }
 
+// Function to return all posts from all users and order them by most upvoted.
+function sortAllPostsByUpvotes(object $pdo): array
+{
+    $statement = $pdo->prepare('SELECT COUNT(upvotes.post_id) as upvotes, posts.id, posts.title, posts.url, posts.text, posts.user_id, posts.date, users.username, users.avatar
+                                FROM upvotes
+                                INNER JOIN posts
+                                ON upvotes.post_id = posts.id
+                                INNER JOIN users
+                                ON posts.user_id = users.id
+                                GROUP BY upvotes.post_id
+                                ORDER BY upvotes DESC');
+    $statement->execute();
+
+    $upvotedPosts = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    return $upvotedPosts;
+}
+
 // Function to return all posts from one user in descending order.
 function getUserPosts(int $id, object $pdo): array
 {
@@ -154,24 +172,6 @@ function alreadyUpvoted(int $postId, int $userId, object $pdo): bool
     return $alreadyUpvoted ? true : false;
 }
 
-// Function to sort posts by most upvoted.
-function sortByUpvotes(object $pdo): array
-{
-    $statement = $pdo->prepare('SELECT COUNT(upvotes.post_id) as upvotes, posts.id, posts.title, posts.url, posts.text, posts.user_id, posts.date, users.username, users.avatar
-                                FROM upvotes
-                                INNER JOIN posts
-                                ON upvotes.post_id = posts.id
-                                INNER JOIN users
-                                ON posts.user_id = users.id
-                                GROUP BY upvotes.post_id
-                                ORDER BY upvotes DESC');
-    $statement->execute();
-
-    $upvotedPosts = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-    return $upvotedPosts;
-}
-
 
 // COMMENT RELATED FUNCTIONS
 
@@ -207,10 +207,10 @@ function getCommentById(int $id, object $pdo): array
     return $comments;
 }
 
-function countNumberOfComments(int $postId, object $pdo)
+function countNumberOfComments(int $id, object $pdo)
 {
-    $statement = $pdo->prepare('SELECT COUNT(*) FROM comments WHERE post_id = :postId');
-    $statement->bindParam(':postId', $postId, PDO::PARAM_INT);
+    $statement = $pdo->prepare('SELECT COUNT(*) FROM comments WHERE post_id = :post_id');
+    $statement->bindParam(':post_id', $id, PDO::PARAM_INT);
     $statement->execute();
 
     $numberOfComments = $statement->fetch();

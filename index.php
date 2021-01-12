@@ -1,7 +1,7 @@
 <?php require __DIR__ . '/app/autoload.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
 
-<?php $allPosts = sortByUpvotes($pdo); ?>
+<?php $allPosts = sortAllPostsByUpvotes($pdo); ?>
 
 <?php if (loggedIn()) : ?>
     <article>
@@ -40,8 +40,6 @@
                     <a href="/updateuserpost.php?id=<?php echo $post['id']; ?>">Edit Post</a>
                 <?php endif; ?>
             </small>
-
-            </small>
             <br>
         <?php endforeach; ?>
     </article>
@@ -55,6 +53,8 @@
 
         <?php foreach ($allPosts as $post) : ?>
             <?php $upvotes = countUpvotes($post['id'], $pdo); ?>
+            <?php $numberOfComments = countNumberOfComments($post['id'], $pdo); ?>
+
             <img loading="lazy" src="<?php echo '/app/users/images/' . $post['avatar'] ?>" alt="user-avatar" width="50px">
             <small class="form-text text-muted"><?php echo $post['username'] ?></small>
             <br>
@@ -63,6 +63,7 @@
             <p><?php echo $post['text'] ?></p>
             <small class="form-text text-muted">Upvotes: <?php echo $upvotes; ?></small>
             <small class="form-text text-muted">Posted: <?php echo $post['date']; ?></small>
+            <small class="form-text"><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $numberOfComments; ?> comments</a></small>
             <br>
         <?php endforeach; ?>
     </article>
