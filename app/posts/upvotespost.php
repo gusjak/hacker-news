@@ -47,5 +47,5 @@ if (loggedIn() && isset($_POST['postid'])) {
         $statement->execute();
     }
 
-    redirect('/?id=' . $postId);
+    redirect('/post.php?id=' . $postId);
 }

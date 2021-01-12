@@ -23,12 +23,12 @@
             <p><?php echo $post['text'] ?></p>
             <small class="form-text text-muted">Upvotes: <?php echo $upvotes; ?></small>
             <?php if ($alreadyUpvoted) : ?>
-                <form action="app/posts/upvotes.php" method="post">
+                <form action="app/posts/upvotesfeed.php" method="post">
                     <button class="btn btn-link" type="submit" name="submit">Downvote</button>
                     <input type="hidden" name="postid" value="<?php echo $post['id']; ?>">
                 </form>
             <?php else : ?>
-                <form action="app/posts/upvotes.php" method="post">
+                <form action="app/posts/upvotesfeed.php" method="post">
                     <button class="btn btn-link" type="submit" name="submit">Upvote</button>
                     <input type="hidden" name="postid" value="<?php echo $post['id']; ?>">
                 </form>
