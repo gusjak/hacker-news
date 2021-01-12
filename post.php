@@ -13,16 +13,16 @@ $upvotes = countUpvotes($post['id'], $pdo);
         <p><?php $message ?></p>
         <?php $currentUserId = $_SESSION['user']['id']; ?>
         <?php $alreadyUpvoted = alreadyUpvoted($post['id'], $currentUserId, $pdo); ?>
-
+        <br>
         <div class="card shadow p-4 mb-4 bg-white mw-100">
             <img loading="lazy" src="<?php echo '/app/users/images/' . $post['avatar'] ?>" alt="user-avatar" width="50px">
-            <?php if ($currentUserId === $postId) : ?>
+            <?php if ($_SESSION['user']['id'] === $postId) : ?>
                 <small class="form-text text-muted"><a href="/settings.php?id=<?php echo $post['user_id']; ?>"><?php echo $post['username'] ?></a></small>
             <?php else : ?>
                 <small class="form-text text-muted"><a href="/profile.php?id=<?php echo $post['user_id']; ?>"><?php echo $post['username'] ?></a></small>
             <?php endif; ?>
             <br>
-            <h6><strong><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $post['title'] ?></a></strong></h6>
+            <h6><strong><?php echo $post['title'] ?></strong></h6>
             <a href="#"><?php echo $post['url'] ?></a>
             <p><?php echo $post['text'] ?></p>
             <small class="form-text text-muted">Upvotes: <?php echo $upvotes; ?></small>
@@ -38,21 +38,19 @@ $upvotes = countUpvotes($post['id'], $pdo);
                 </form>
             <?php endif; ?>
             <small class="form-text text-muted">Created: <?php echo $post['date']; ?></small>
+            <br>
         </div>
-        <div class="py-1" </div>
     </article>
 
-    <article>
-        <div class="card shadow p-4 mb-4 bg-white mw-100">
-            <form action="app/comments/store.php?id=<?php echo $post['user_id']; ?>" method="post">
-                <div class="form-group">
-                    <small class="form-text text-muted">Comment</small>
-                    <textarea class="form-control" rows="5" cols="5" type="text" name="comment" id="comment"></textarea>
-                </div><!-- /form-group -->
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
-    </article>
+    <div class="card shadow p-4 mb-4 bg-white mw-100">
+        <form action="app/comments/store.php?id=<?php echo $post['id']; ?>" method="post">
+            <div class="form-group">
+                <small class="form-text text-muted">Comment</small>
+                <textarea class="form-control" rows="5" cols="5" type="text" name="comment" id="comment"></textarea>
+            </div><!-- /form-group -->
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
 
     <br>
 
@@ -64,8 +62,8 @@ $upvotes = countUpvotes($post['id'], $pdo);
                 <p>Be the first to comment on this post!</p>
             <?php else : ?>
                 <?php foreach ($comments as $comment) : ?>
-                    <?php $currentUserId = $_SESSION['user']['id']; ?>
                     <?php $userCommentId = $comment['user_id']; ?>
+
                     <div class="card shadow-sm p-4 mb-4 bg-light mw-100">
                         <img loading="lazy" src="<?php echo '/app/users/images/' . $comment['avatar'] ?>" alt="user-avatar" width="25px">
                         <?php if ($currentUserId === $comment) : ?>
@@ -91,14 +89,15 @@ $upvotes = countUpvotes($post['id'], $pdo);
     </article>
 
 <?php else : ?>
+
     <article>
-        <p><?php $message ?></p>
-        <br>
         <div class="card shadow p-4 mb-4 bg-white mw-100">
+            <p><?php $message ?></p>
+            <br>
             <img loading="lazy" src="<?php echo '/app/users/images/' . $post['avatar'] ?>" alt="user-avatar" width="50px">
             <small class="form-text text-muted"><a href="/profile.php?id=<?php echo $post['user_id']; ?>"><?php echo $post['username'] ?></a></small>
             <br>
-            <h6><strong><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $post['title'] ?></a></strong></h6>
+            <h6><strong><?php echo $post['title'] ?></strong></h6>
             <a href="#"><?php echo $post['url'] ?></a>
             <p><?php echo $post['text'] ?></p>
             <small class="form-text text-muted">Upvotes: <?php echo $upvotes; ?></small>

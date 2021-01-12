@@ -194,16 +194,18 @@ function getComments(int $id, PDO $pdo): array
 function getCommentById(int $id, object $pdo): array
 {
     $statement = $pdo->prepare('SELECT comments.id, comments.post_id, comments.user_id, comments.content, comments.date, users.avatar, users.username
-    FROM comments
-    INNER JOIN users
-    ON comments.user_id = users.id
-    WHERE comments.post_id = :post_id
-    ORDER BY comments.id DESC
-    LIMIT 1');
+                                FROM comments
+                                INNER JOIN users
+                                ON comments.user_id = users.id
+                                WHERE comments.post_id = :post_id
+                                ORDER BY comments.id DESC
+                                LIMIT 1');
 
     $statement->bindParam(':post_id', $id, PDO::PARAM_INT);
     $statement->execute();
+
     $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
+
     return $comments;
 }
 
