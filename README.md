@@ -72,6 +72,13 @@ localhost:8000/index.php
 
 <br>
 
+## Testers
+
+1. [Jonathan Larsson](https://github.com/Icarium2)
+2.
+
+<br>
+
 ## Code review
 
 [Sandra Danielsson](https://github.com/San-Dan)
