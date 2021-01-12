@@ -89,7 +89,6 @@ $upvotes = countUpvotes($post['id'], $pdo);
     </article>
 
 <?php else : ?>
-
     <article>
         <div class="card shadow p-4 mb-4 bg-white mw-100">
             <p><?php $message ?></p>
