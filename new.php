@@ -38,7 +38,11 @@
                 </form>
             <?php endif; ?>
             <small class="form-text text-muted">Posted: <?php echo $post['date']; ?></small>
-            <small class="form-text"><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $numberOfComments; ?> comments</a></small>
+            <?php if ($numberOfComments <= 1) : ?>
+                <small class="form-text"><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $numberOfComments; ?> comment</a></small>
+            <?php else : ?>
+                <small class="form-text"><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $numberOfComments; ?> comments</a></small>
+            <?php endif; ?>
             <small class="form-text">
                 <?php if ($currentUserId === $userPostId) : ?>
                     <a href="/updateuserpost.php?id=<?php echo $post['id']; ?>">Edit Post</a>

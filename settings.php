@@ -52,7 +52,7 @@ $id = (int) $_SESSION['user']['id'];
     <h3>About</h3>
     <form action="app/users/settings.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
-            <textarea class="form-control rounded-0" name="biography" rows="10"><?php echo $user['biography'] ?></textarea>
+            <textarea class="form-control rounded-0" name="biography" rows="5"><?php echo $user['biography'] ?></textarea>
             <small class="form-text text-muted">You may change this by filling out this field.</small>
         </div><!-- /form-group -->
 

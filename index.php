@@ -22,7 +22,7 @@
                 <small class="form-text text-muted"><a href="/profile.php?id=<?php echo $post['user_id']; ?>"><?php echo $post['username'] ?></a></small>
             <?php endif; ?>
             <br>
-            <h6><strong><?php echo $post['title'] ?></strong></h6>
+            <h6><strong><a href="/post.php?id=<?php echo $post['id']; ?>" <?php echo $post['title'] ?></a></strong></h6>
             <a href="#"><?php echo $post['url'] ?></a>
             <p><?php echo $post['text'] ?></p>
             <small class="form-text text-muted">Upvotes: <?php echo $upvotes; ?></small>
@@ -38,7 +38,11 @@
                 </form>
             <?php endif; ?>
             <small class="form-text text-muted">Posted: <?php echo $post['date']; ?></small>
-            <small class="form-text"><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $numberOfComments; ?> comments</a></small>
+            <?php if ($numberOfComments <= 1) : ?>
+                <small class="form-text"><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $numberOfComments; ?> comment</a></small>
+            <?php else : ?>
+                <small class="form-text"><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $numberOfComments; ?> comments</a></small>
+            <?php endif; ?>
             <small class="form-text">
                 <?php if ($currentUserId === $userPostId) : ?>
                     <a href="/updateuserpost.php?id=<?php echo $post['id']; ?>">Edit Post</a>
@@ -62,7 +66,7 @@
             <img loading="lazy" src="<?php echo '/app/users/images/' . $post['avatar'] ?>" alt="user-avatar" width="50px">
             <small class="form-text text-muted"><a href="/profile.php?id=<?php echo $post['user_id']; ?>"><?php echo $post['username'] ?></a></small>
             <br>
-            <h6><?php echo $post['title'] ?></h6>
+            <h6><strong><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $post['title'] ?></a></strong></h6>
             <a href="#"><?php echo $post['url'] ?></a>
             <p><?php echo $post['text'] ?></p>
             <small class="form-text text-muted">Upvotes: <?php echo $upvotes; ?></small>

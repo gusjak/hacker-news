@@ -29,10 +29,10 @@ if (isset($_POST['email'], $_POST['username'], $_POST['password'])) {
     }
 
     $password = trim(password_hash($_POST['password'], PASSWORD_BCRYPT));
-    $firstName = 'First Name';
-    $lastName = 'Last Name';
+    $firstName = '';
+    $lastName = '';
     $userAvatar = 'placeholder.png';
-    $biography = 'Write something short about yourself.';
+    $biography = '';
 
     $statement = $pdo->prepare('INSERT INTO users (email, username, password, first_name, last_name, avatar, biography) 
                                 VALUES (:email, :username, :password, :first_name, :last_name, :avatar, :biography)');
@@ -50,6 +50,6 @@ if (isset($_POST['email'], $_POST['username'], $_POST['password'])) {
     $statement->bindParam(':biography', $biography, PDO::PARAM_STR);
     $statement->execute();
 
-    $_SESSION['message'] = 'Succesfully created account. You may now log in.';
+    $_SESSION['message'] = 'Succesfully created account. You may now log in. <br> You can update your profile information in \'Settings\'.';
 }
 redirect('/login.php');
