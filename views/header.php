@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="/assets/styles/app.css">
 </head>
 
-<body>
+<body class="bg-light">
 
     <?php require __DIR__ . '/navigation.php'; ?>
     <?php require __DIR__ . '/../app/message.php'; ?>
 
-    <div class="container py-5">
+    <div class="container pt-5 px-5 mw-100 bg-light">

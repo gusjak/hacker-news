@@ -15,40 +15,42 @@
             <?php $alreadyUpvoted = alreadyUpvoted($post['id'], $currentUserId, $pdo); ?>
             <?php $numberOfComments = countNumberOfComments($post['id'], $pdo); ?>
 
-            <img loading="lazy" src="<?php echo '/app/users/images/' . $post['avatar'] ?>" alt="user-avatar" width="50px">
-            <?php if ($currentUserId === $userPostId) : ?>
-                <small class="form-text text-muted"><a href="/settings.php?id=<?php echo $post['user_id']; ?>"><?php echo $post['username'] ?></a></small>
-            <?php else : ?>
-                <small class="form-text text-muted"><a href="/profile.php?id=<?php echo $post['user_id']; ?>"><?php echo $post['username'] ?></a></small>
-            <?php endif; ?>
-            <br>
-            <h6><strong><?php echo $post['title'] ?></strong></h6>
-            <a href="#"><?php echo $post['url'] ?></a>
-            <p><?php echo $post['text'] ?></p>
-            <small class="form-text text-muted">Upvotes: <?php echo $upvotes; ?></small>
-            <?php if ($alreadyUpvoted) : ?>
-                <form action="app/posts/upvotesnew.php" method="post">
-                    <button class="btn btn-link" type="submit" name="submit">Downvote</button>
-                    <input type="hidden" name="postid" value="<?php echo $post['id']; ?>">
-                </form>
-            <?php else : ?>
-                <form action="app/posts/upvotesnew.php" method="post">
-                    <button class="btn btn-link" type="submit" name="submit">Upvote</button>
-                    <input type="hidden" name="postid" value="<?php echo $post['id']; ?>">
-                </form>
-            <?php endif; ?>
-            <small class="form-text text-muted">Posted: <?php echo $post['date']; ?></small>
-            <?php if ($numberOfComments == 1) : ?>
-                <small class="form-text"><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $numberOfComments; ?> comment</a></small>
-            <?php else : ?>
-                <small class="form-text"><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $numberOfComments; ?> comments</a></small>
-            <?php endif; ?>
-            <small class="form-text">
+            <div class="card shadow p-4 mb-4 bg-white mw-100">
+                <img loading="lazy" src="<?php echo '/app/users/images/' . $post['avatar'] ?>" alt="user-avatar" width="50px">
                 <?php if ($currentUserId === $userPostId) : ?>
-                    <a href="/updateuserpost.php?id=<?php echo $post['id']; ?>">Edit Post</a>
+                    <small class="form-text text-muted"><a href="/settings.php?id=<?php echo $post['user_id']; ?>"><?php echo $post['username'] ?></a></small>
+                <?php else : ?>
+                    <small class="form-text text-muted"><a href="/profile.php?id=<?php echo $post['user_id']; ?>"><?php echo $post['username'] ?></a></small>
                 <?php endif; ?>
-            </small>
-            <br>
+                <br>
+                <h6><strong><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $post['title'] ?></a></strong></h6>
+                <a href="#"><?php echo $post['url'] ?></a>
+                <p><?php echo $post['text'] ?></p>
+                <small class="form-text text-muted">Upvotes: <?php echo $upvotes; ?></small>
+                <?php if ($alreadyUpvoted) : ?>
+                    <form action="app/posts/upvotesnew.php" method="post">
+                        <button class="btn btn-link" type="submit" name="submit">Downvote</button>
+                        <input type="hidden" name="postid" value="<?php echo $post['id']; ?>">
+                    </form>
+                <?php else : ?>
+                    <form action="app/posts/upvotesnew.php" method="post">
+                        <button class="btn btn-link" type="submit" name="submit">Upvote</button>
+                        <input type="hidden" name="postid" value="<?php echo $post['id']; ?>">
+                    </form>
+                <?php endif; ?>
+                <small class="form-text text-muted">Posted: <?php echo $post['date']; ?></small>
+                <?php if ($numberOfComments == 1) : ?>
+                    <small class="form-text"><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $numberOfComments; ?> comment</a></small>
+                <?php else : ?>
+                    <small class="form-text"><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $numberOfComments; ?> comments</a></small>
+                <?php endif; ?>
+                <small class="form-text">
+                    <?php if ($currentUserId === $userPostId) : ?>
+                        <a href="/updateuserpost.php?id=<?php echo $post['id']; ?>">Edit Post</a>
+                    <?php endif; ?>
+                </small>
+            </div>
+            <div class="py-1"></div>
         <?php endforeach; ?>
     </article>
 
@@ -60,16 +62,18 @@
             <?php $upvotes = countUpvotes($post['id'], $pdo); ?>
             <?php $numberOfComments = countNumberOfComments($post['id'], $pdo); ?>
 
-            <img loading="lazy" src="<?php echo '/app/users/images/' . $post['avatar'] ?>" alt="user-avatar" width="50px">
-            <small class="form-text text-muted"><a href="/profile.php?id=<?php echo $post['user_id']; ?>"><?php echo $post['username'] ?></a></small>
-            <br>
-            <h6><?php echo $post['title'] ?></h6>
-            <a href="#"><?php echo $post['url'] ?></a>
-            <p><?php echo $post['text'] ?></p>
-            <small class="form-text text-muted">Upvotes: <?php echo $upvotes; ?></small>
-            <small class="form-text text-muted">Posted: <?php echo $post['date']; ?></small>
-            <small class="form-text"><a href="/post.php?id=<?php echo $post['user_id']; ?>"><?php echo $numberOfComments; ?> comments</a></small>
-            <br>
+            <div class="card shadow p-4 mb-4 bg-white mw-100">
+                <img loading="lazy" src="<?php echo '/app/users/images/' . $post['avatar'] ?>" alt="user-avatar" width="50px">
+                <small class="form-text text-muted"><a href="/profile.php?id=<?php echo $post['user_id']; ?>"><?php echo $post['username'] ?></a></small>
+                <br>
+                <h6><strong><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $post['title'] ?></a></strong></h6>
+                <a href="#"><?php echo $post['url'] ?></a>
+                <p><?php echo $post['text'] ?></p>
+                <small class="form-text text-muted">Upvotes: <?php echo $upvotes; ?></small>
+                <small class="form-text text-muted">Posted: <?php echo $post['date']; ?></small>
+                <small class="form-text"><a href="/post.php?id=<?php echo $post['user_id']; ?>"><?php echo $numberOfComments; ?> comments</a></small>
+            </div>
+            <div class="py-1"></div>
         <?php endforeach; ?>
     </article>
 <?php endif; ?>
