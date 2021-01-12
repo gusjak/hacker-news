@@ -54,11 +54,8 @@
 
 <?php else : ?>
     <article>
-
         <h4><strong>Most upvoted posts</strong></h4>
-
         <br>
-
         <?php foreach ($allPosts as $post) : ?>
             <?php $upvotes = countUpvotes($post['id'], $pdo); ?>
             <?php $numberOfComments = countNumberOfComments($post['id'], $pdo); ?>

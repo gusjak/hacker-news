@@ -83,7 +83,6 @@ $upvotes = countUpvotes($post['id'], $pdo);
     </article>
 
 <?php else : ?>
-
     <article>
         <p><?php $message ?></p>
         <br>
