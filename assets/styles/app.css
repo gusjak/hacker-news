@@ -1,5 +1,12 @@
 /* In this file you can add your custom styles. */
 .btn-link {
-  font-size: 12px;
-  margin-left: -12px;
+  font-size: 0.8rem;
+  margin-left: -0.8rem;
+}
+
+@media (min-width: 375px) {
+  .navbar li {
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+  }
 }

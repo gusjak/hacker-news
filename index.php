@@ -24,7 +24,7 @@
                 <?php endif; ?>
                 <br>
                 <h6><strong><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $post['title'] ?></a></strong></h6>
-                <a href="#"><?php echo $post['url'] ?></a>
+                <a href="<?php echo $post['url'] ?>"><?php echo $post['url'] ?></a>
                 <p><?php echo $post['text'] ?></p>
                 <small class="form-text text-muted">Upvotes: <?php echo $upvotes; ?></small>
                 <?php if ($alreadyUpvoted) : ?>
@@ -67,11 +67,15 @@
                 <small class="form-text text-muted"><a href="/profile.php?id=<?php echo $post['user_id']; ?>"><?php echo $post['username'] ?></a></small>
                 <br>
                 <h6><strong><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $post['title'] ?></a></strong></h6>
-                <a href="#"><?php echo $post['url'] ?></a>
+                <a href="<?php echo $post['url'] ?>"><?php echo $post['url'] ?></a>
                 <p><?php echo $post['text'] ?></p>
                 <small class="form-text text-muted">Upvotes: <?php echo $upvotes; ?></small>
                 <small class="form-text text-muted">Posted: <?php echo $post['date']; ?></small>
-                <small class="form-text"><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $numberOfComments; ?> comments</a></small>
+                <?php if ($numberOfComments == 1) : ?>
+                    <small class="form-text"><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $numberOfComments; ?> comment</a></small>
+                <?php else : ?>
+                    <small class="form-text"><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $numberOfComments; ?> comments</a></small>
+                <?php endif; ?>
             </div>
             <div class="py-1"></div>
         <?php endforeach; ?>
