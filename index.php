@@ -16,7 +16,11 @@
             <?php $numberOfComments = countNumberOfComments($post['id'], $pdo); ?>
 
             <img loading="lazy" src="<?php echo '/app/users/images/' . $post['avatar'] ?>" alt="user-avatar" width="50px">
-            <small class="form-text text-muted"><?php echo $post['username'] ?></small>
+            <?php if ($currentUserId === $userPostId) : ?>
+                <small class="form-text text-muted"><a href="/settings.php?id=<?php echo $post['user_id']; ?>"><?php echo $post['username'] ?></a></small>
+            <?php else : ?>
+                <small class="form-text text-muted"><a href="/profile.php?id=<?php echo $post['user_id']; ?>"><?php echo $post['username'] ?></a></small>
+            <?php endif; ?>
             <br>
             <h6><strong><?php echo $post['title'] ?></strong></h6>
             <a href="#"><?php echo $post['url'] ?></a>
@@ -56,7 +60,7 @@
             <?php $numberOfComments = countNumberOfComments($post['id'], $pdo); ?>
 
             <img loading="lazy" src="<?php echo '/app/users/images/' . $post['avatar'] ?>" alt="user-avatar" width="50px">
-            <small class="form-text text-muted"><?php echo $post['username'] ?></small>
+            <small class="form-text text-muted"><a href="/profile.php?id=<?php echo $post['user_id']; ?>"><?php echo $post['username'] ?></a></small>
             <br>
             <h6><?php echo $post['title'] ?></h6>
             <a href="#"><?php echo $post['url'] ?></a>

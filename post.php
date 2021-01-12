@@ -2,7 +2,7 @@
 <?php require __DIR__ . '/views/header.php'; ?>
 
 <?php
-$currentUserId = loggedIn();
+$currentUserId = $_SESSION['user']['id'];
 $postId = $_GET['id'];
 $post = getPostById($postId, $pdo);
 $comments = getComments($postId, $pdo);
@@ -15,7 +15,11 @@ $alreadyUpvoted = alreadyUpvoted($post['id'], $currentUserId, $pdo);
     <p><?php $message ?></p>
     <br>
     <img loading="lazy" src="<?php echo '/app/users/images/' . $post['avatar'] ?>" alt="user-avatar" width="50px">
-    <small class="form-text text-muted"><?php echo $post['username'] ?></small>
+    <?php if ($currentUserId === $postId) : ?>
+        <small class="form-text text-muted"><a href="/settings.php?id=<?php echo $post['user_id']; ?>"><?php echo $post['username'] ?></a></small>
+    <?php else : ?>
+        <small class="form-text text-muted"><a href="/profile.php?id=<?php echo $post['user_id']; ?>"><?php echo $post['username'] ?></a></small>
+    <?php endif; ?>
     <br>
     <h6><?php echo $post['title'] ?></h6>
     <a href="#"><?php echo $post['url'] ?></a>
@@ -34,7 +38,7 @@ $alreadyUpvoted = alreadyUpvoted($post['id'], $currentUserId, $pdo);
             </form>
         <?php endif; ?>
     <?php endif; ?>
-    <small class="form-text text-muted">Posted: <?php echo $post['date']; ?></small>
+    <small class="form-text text-muted">Created: <?php echo $post['date']; ?></small>
     <br>
 </article>
 <article>
@@ -57,7 +61,7 @@ $alreadyUpvoted = alreadyUpvoted($post['id'], $currentUserId, $pdo);
         <img loading="lazy" src="<?php echo '/app/users/images/' . $comment['avatar'] ?>" alt="user-avatar" width="25px">
         <small class="form-text text-muted"><?php echo $comment['username'] ?></small>
         <p><?php echo $comment['content'] ?></p>
-        <small class="form-text text-muted">Posted: <?php echo $comment['date']; ?></small>
+        <small class="form-text text-muted">Created: <?php echo $comment['date']; ?></small>
         <?php if (LoggedIn()) : ?>
             <?php if ($currentUserId === $userCommentId) : ?>
                 <small class="form-text text-muted">
