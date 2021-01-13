@@ -21,3 +21,10 @@ if (cancelButton) {
     deleteLabel.classList.toggle("hidden");
   });
 }
+
+// Stay in the same window position when upvoting post. (Supplied by Hugo).
+window.scrollTo(0, sessionStorage.scroll);
+
+window.addEventListener("scroll", () => {
+  sessionStorage.setItem("scroll", window.scrollY);
+});
