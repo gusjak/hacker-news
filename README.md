@@ -81,7 +81,7 @@ localhost:8000/index.php
 ## Testers
 
 1. [Jonathan Larsson](https://github.com/Icarium2)
-2. 
+2. [Hugo Sundberg](https://github.com/Hugocsundberg)
 
 <br>
 
