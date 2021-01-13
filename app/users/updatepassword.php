@@ -12,10 +12,6 @@ if (loggedIn() && isset($_POST['current-password'], $_POST['new-password'], $_PO
 
     $statement = $pdo->prepare('SELECT password FROM users WHERE id = :id');
 
-    if (!$statement) {
-        die(var_dump($pdo->errorInfo()));
-    }
-
     $statement->bindParam(':id', $id, PDO::PARAM_INT);
     $statement->execute();
 
@@ -24,10 +20,6 @@ if (loggedIn() && isset($_POST['current-password'], $_POST['new-password'], $_PO
     if (password_verify($currentPassword, $user['password'])) {
         if ($newPassword == $comfirmPassword) {
             $statement = $pdo->prepare('UPDATE users SET password = :password WHERE id = :id');
-
-            if (!$statement) {
-                die(var_dump($pdo->errorInfo()));
-            }
 
             $statement->bindParam(':password', password_hash($newPassword, PASSWORD_BCRYPT), PDO::PARAM_STR);
             $statement->bindParam(':id', $id, PDO::PARAM_INT);

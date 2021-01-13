@@ -11,6 +11,7 @@ if (loggedIn()) {
     $commentId = $_GET['comment-id'];
 
     $statement = $pdo->prepare('DELETE FROM comments WHERE id = :id AND user_id = :user_id');
+
     $statement->bindParam(':id', $commentId, PDO::PARAM_INT);
     $statement->bindParam(':user_id', $userId, PDO::PARAM_INT);
     $statement->execute();

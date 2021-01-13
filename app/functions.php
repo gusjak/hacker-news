@@ -94,13 +94,13 @@ function getAllPosts(object $pdo): array
 // Function to return all posts from all users and order them by most upvoted.
 function sortAllPostsByUpvotes(object $pdo): array
 {
-    $statement = $pdo->prepare('SELECT COUNT(upvotes.post_id) as upvotes, posts.id, posts.title, posts.url, posts.text, posts.user_id, posts.date, users.username, users.avatar
+    $statement = $pdo->prepare('SELECT COUNT(upvotes.post_id) AS upvotes, posts.id, posts.title, posts.url, posts.text, posts.user_id, posts.date, users.username, users.avatar
                                 FROM upvotes
                                 INNER JOIN posts
                                 ON upvotes.post_id = posts.id
                                 INNER JOIN users
                                 ON posts.user_id = users.id
-                                GROUP BY upvotes.post_id
+                                GROUP BY posts.id
                                 ORDER BY upvotes DESC');
     $statement->execute();
 

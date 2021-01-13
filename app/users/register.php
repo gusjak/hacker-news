@@ -23,6 +23,11 @@ if (isset($_POST['email'], $_POST['username'], $_POST['password'])) {
         redirect('/register.php');
     }
 
+    if (strlen($_POST['password']) < 6) {
+        $_SESSION['message'] = 'The password must be at least 6 characters long.';
+        redirect('/register.php');
+    }
+
     if ($_POST['password'] !== $_POST['comfirm-password']) {
         $_SESSION['message'] = 'Your passwords doesn\'t match, please try again.';
         redirect('/register.php');
@@ -37,9 +42,6 @@ if (isset($_POST['email'], $_POST['username'], $_POST['password'])) {
     $statement = $pdo->prepare('INSERT INTO users (email, username, password, first_name, last_name, avatar, biography) 
                                 VALUES (:email, :username, :password, :first_name, :last_name, :avatar, :biography)');
 
-    if (!$statement) {
-        die(var_dump($pdo->errorInfo()));
-    }
 
     $statement->bindParam(':email', $email, PDO::PARAM_STR);
     $statement->bindParam(':username', $username, PDO::PARAM_STR);

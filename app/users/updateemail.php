@@ -24,10 +24,6 @@ if (loggedIn() && isset($_POST['current-email'], $_POST['new-email'], $_POST['co
 
     $statement = $pdo->prepare('SELECT email FROM users WHERE id = :id');
 
-    if (!$statement) {
-        die(var_dump($pdo->errorInfo()));
-    }
-
     $statement->bindParam(':id', $id, PDO::PARAM_INT);
     $statement->execute();
 
@@ -36,10 +32,6 @@ if (loggedIn() && isset($_POST['current-email'], $_POST['new-email'], $_POST['co
     if ($currentEmail == $user['email']) {
         if ($newEmail == $comfirmEmail) {
             $statement = $pdo->prepare('UPDATE users SET email = :email WHERE id = :id');
-
-            if (!$statement) {
-                die(var_dump($pdo->errorInfo()));
-            }
 
             $statement->bindParam(':email', $newEmail, PDO::PARAM_STR);
             $statement->bindParam(':id', $id, PDO::PARAM_INT);

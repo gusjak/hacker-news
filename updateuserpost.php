@@ -18,7 +18,7 @@ $post = getPostById($postId, $pdo)
             </div><!-- /form-group -->
 
             <div class="form-group">
-                <label for="url">URL: <a href="<?php echo $post['url']; ?>"><?php echo $post['url']; ?></a></label>
+                <label for="url">URL: <a class="info-text" href="<?php echo $post['url']; ?>"><?php echo $post['url']; ?></a></label>
                 <input class="form-control" type="url" name="new-url" id="new-url" value="<?php echo $post['url']; ?>">
                 <small class="form-text text-muted">You may change the url by filling out this field.</small>
             </div><!-- /form-group -->

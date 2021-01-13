@@ -28,7 +28,7 @@ $allUserPosts = getUserPosts($userId, $pdo);
                         <small class="form-text text-muted"><?php echo $user['username'] ?></small>
                         <br>
                         <h6><strong><?php echo $userPost['title'] ?></strong></h6>
-                        <a href="<?php echo $userPost['url'] ?>"><?php echo $userPost['url'] ?></a>
+                        <p><a class="text-info" href="<?php echo $userPost['url'] ?>"><?php echo $userPost['url'] ?></a></p>
                         <p><?php echo $userPost['text'] ?></p>
                         <small class="form-text text-muted">Posted: <?php echo $userPost['date']; ?></small>
                         <small class="form-text text-muted">Upvotes: <?php echo $upvotes; ?></small>

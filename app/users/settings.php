@@ -16,10 +16,6 @@ if (loggedIn()) {
     } else {
         $statement = $pdo->prepare('UPDATE users SET first_name = :first_name WHERE id = :id');
 
-        if (!$statement) {
-            die(var_dump($pdo->errorInfo()));
-        }
-
         $statement->bindParam(':first_name', $firstName, PDO::PARAM_STR);
         $statement->bindParam(':id', $id, PDO::PARAM_INT);
         $statement->execute();
@@ -33,10 +29,6 @@ if (loggedIn()) {
     } else {
         $statement = $pdo->prepare('UPDATE users SET last_name = :last_name WHERE id = :id');
 
-        if (!$statement) {
-            die(var_dump($pdo->errorInfo()));
-        }
-
         $statement->bindParam(':last_name', $lastName, PDO::PARAM_STR);
         $statement->bindParam(':id', $id, PDO::PARAM_INT);
         $statement->execute();
@@ -49,10 +41,6 @@ if (loggedIn()) {
         $biography = $_SESSION['user']['biography'];
     } else {
         $statement = $pdo->prepare('UPDATE users SET biography = :biography WHERE id = :id');
-
-        if (!$statement) {
-            die(var_dump($pdo->errorInfo()));
-        }
 
         $statement->bindParam(':biography', $biography, PDO::PARAM_STR);
         $statement->bindParam(':id', $id, PDO::PARAM_INT);

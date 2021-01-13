@@ -26,10 +26,6 @@ if (LoggedIn() && isset($_FILES['avatar'])) {
 
         $statement = $pdo->prepare('UPDATE users SET avatar = :avatar WHERE id = :id');
 
-        if (!$statement) {
-            die(var_dump($pdo->errorInfo()));
-        }
-
         $statement->bindParam(':avatar', $newAvatar, PDO::PARAM_STR);
         $statement->bindParam(':id', $id, PDO::PARAM_INT);
         $statement->execute();

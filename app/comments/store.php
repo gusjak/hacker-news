@@ -13,15 +13,10 @@ if (loggedIn() && isset($_POST['comment'])) {
 
     $statement = $pdo->prepare('INSERT INTO comments(post_id, user_id, content, date) VALUES(:post_id, :user_id, :content, :date)');
 
-    if (!$statement) {
-        die(var_dump($pdo->errorInfo()));
-    }
-
     $statement->bindParam(':post_id', $postId, PDO::PARAM_INT);
     $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
     $statement->bindParam(':content', $comment, PDO::PARAM_STR);
     $statement->bindParam(':date', $timestamp, PDO::PARAM_STR);
-
     $statement->execute();
 
     $_SESSION['message'] = 'Your comment has been submitted.';
