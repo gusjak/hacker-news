@@ -111,8 +111,16 @@ $id = (int) $_SESSION['user']['id'];
             <button type="submit" class="btn btn-secondary">Save changes</button>
         </form>
     </div>
-    <br>
-    <button type="button" class="btn btn-danger">Delete Account</button>
+    <form class="user-settings" action="app/users/deleteaccount.php" method="post">
+        <label class="delete-account-label text-info hidden" for="delete-button">
+            Please comfirm that you want to delete your account. <br>
+            Your posts, comments and upvotes will be deleted as well.
+        </label>
+        <br>
+        <button type="submit" class="btn btn-danger delete-account-real hidden" name="delete-button">Delete Account</button>
+    </form>
+    <button type="button" class="btn btn-danger delete-account">Delete Account</button>
+    <button type="button" class="btn btn-success cancel-button hidden">Cancel</button>
     <div class="pb-5"></div>
 </article>
 

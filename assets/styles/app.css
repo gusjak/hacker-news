@@ -4,6 +4,10 @@
   margin-left: -0.8rem;
 }
 
+.hidden {
+  display: none;
+}
+
 @media (min-width: 375px) {
   .navbar li {
     margin-left: 0.25em;

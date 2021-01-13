@@ -37,7 +37,7 @@
         <?php if (isset($_SESSION['user'])) : ?>
             <li class="nav-item dropdown dropleft">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="<?php echo '/app/users/images/' . $_SESSION['user']['avatar'] ?>" width="50px" height="50px" class="rounded-circle" />
+                    <img src="<?php echo '/app/users/images/' . $_SESSION['user']['avatar'] ?>" width="50px" class="rounded-circle" />
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item <?php echo $_SERVER['SCRIPT_NAME'] === '/userposts.php' ? 'active' : ''; ?>" href="/userposts.php?id=<?php echo $_SESSION['user']['id'] ?>">My Posts</a>
