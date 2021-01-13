@@ -39,6 +39,11 @@ $comments = getComments($postId, $pdo);
                 </form>
             <?php endif; ?>
             <small class="form-text text-muted">Created: <?php echo $post['date']; ?></small>
+            <small class="form-text">
+                <?php if ($currentUserId === $userPostId) : ?>
+                    <a href="/updateuserpost.php?id=<?php echo $post['id']; ?>">Edit Post</a>
+                <?php endif; ?>
+            </small>
             <br>
         </div>
     </article>
