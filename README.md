@@ -44,6 +44,12 @@ You're going to create a [Hacker News](https://news.ycombinator.com/news) clone.
 
 <br>
 
+## Extra Feature / User stories
+
+- [x] As a user I'm able to delete my account along with all posts, upvotes and comments.
+
+<br>
+
 ## Installation Guide
 
 1. To be able to view this webpage, clone this repository through the terminal.
@@ -75,24 +81,28 @@ localhost:8000/index.php
 ## Testers
 
 1. [Jonathan Larsson](https://github.com/Icarium2)
+<<<<<<< HEAD
 2. [Martin Hansson](https://github.com/Alegherix)
+=======
+2. 
+>>>>>>> d608879cdbcc4beef70ea9e47bad0f90a49ac9a7
 
 <br>
 
 ## Code review
 
-[Sandra Danielsson](https://github.com/San-Dan)
+[Ida From](https://github.com/Fvrom)
 
-- [ ] Comment 1
-- [ ] Comment 2
-- [ ] Comment 3
-- [ ] Comment 4
-- [ ] Comment 5
-- [ ] Comment 6
-- [ ] Comment 7
-- [ ] Comment 8
-- [ ] Comment 9
-- [ ] Comment 10
+- Comment 1
+- Comment 2
+- Comment 3
+- Comment 4
+- Comment 5
+- Comment 6
+- Comment 7
+- Comment 8
+- Comment 9
+- Comment 10
 
 <br>
 
