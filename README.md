@@ -89,16 +89,17 @@ localhost:8000/index.php
 
 [Ida From](https://github.com/Fvrom)
 
-- Comment 1
-- Comment 2
-- Comment 3
-- Comment 4
-- Comment 5
-- Comment 6
-- Comment 7
-- Comment 8
-- Comment 9
-- Comment 10
+Snyggt Jakob! Svårt att hitta något du bör ändra egentligen, här kommer lite små ting! 
+- I userposts ser jag du deklarerat userId och currentId med din Session user id, alltså att du deklarerat om den variabeln. Jag har svårt att se vad currentId har för nytta, utan att man istället bara använder sig av userId. 
+- I din upvotesindex ser jag att repeterat kod som du har i din function alreadyUpvoted. Man hade bara kunnat köra den funktionen så slipper man en upprepning av kod där. 
+- I din updateavatar stötte jag på ett nytt sätt att skriva not type jpg/png, detta vet jag inte om det går? Jag testade genom att ladda in en js fil här istället för jpeg eller png och den verkar ha gått igenom med en successful message. i image src ser jag nu istället .js, men inget har dock hänt på backend. 
+ 
+- En små grej, men det hade varit roligt om man kunde granska sin profil istället för att direkt hoppa in i settings!  
+- Ser att du vill få ut "comment" när det är 0 kommentarer på en post och "comments" om det är kommentarer på en post. Detta verkar inte fungera för mig förrän jag ändrar koden till numberofComments < 1 
+- Kanske ännu fler fixes i register, möjligtvis en gräns på vilka characters man får använda i username och en max och minimum characters på username / password! 
+- Snyggt att man kan hoppa in och granska sina posts om man klickar på sin profil! 
+- Supersnyggt med att du sätter in en default avatar när man registrerar sig! 
+- Superbra jobbat, snygg och clean kod! 
 
 <br>
 
