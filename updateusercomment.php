@@ -12,7 +12,7 @@ $comments = getCommentById($postId, $pdo);
     <h4>Edit your comment on <a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $post['title']; ?>.</a></h4>
     <br>
     <?php foreach ($comments as $comment) : ?>
-        <div class="card shadow p-4 mb-4 bg-white mw-100">
+        <div class="card shadow-sm p-4 mb-4 bg-card mw-100">
             <form action="/app/comments/update.php?id=<?php echo $comment['post_id']; ?>&comment-id=<?php echo $comment['id']; ?>" method="post">
                 <div class="form-group">
                     <textarea class="form-control" type="text" name="edit-comment" rows="5" cols="10" required><?php echo $comment['content']; ?></textarea>

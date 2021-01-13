@@ -9,7 +9,7 @@ $allUserPosts = getUserPosts($userId, $pdo);
 
 <?php if (loggedIn()) : ?>
     <article>
-        <div class="card shadow p-4 mb-4 bg-white mw-100">
+        <div class="card shadow p-4 mb-4 bg-card mw-100">
             <h4><?php echo $user['username']; ?>'s submitted posts</h4>
             <?php if (!$allUserPosts) : ?>
                 <br>

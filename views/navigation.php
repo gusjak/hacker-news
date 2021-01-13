@@ -46,5 +46,8 @@
                 </div>
             </li>
         <?php endif; ?>
+
+        <button type="button" class="btn btn-link toggle">🌙</button>
+
     </ul><!-- /navbar-nav -->
 </nav><!-- /navbar -->

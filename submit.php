@@ -4,7 +4,7 @@
 <article>
     <p><?php $message ?></p>
     <h1>Submit</h1>
-    <div class="card shadow p-4 mb-4 bg-white mw-100">
+    <div class="card shadow p-4 mb-4 bg-card mw-100">
         <form action="app/posts/store.php" method="post">
             <div class="form-group">
                 <small class="form-text text-muted">Title</small>

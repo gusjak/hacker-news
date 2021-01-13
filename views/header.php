@@ -14,9 +14,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
-<body class="bg-light">
+<body class="bg-body">
 
     <?php require __DIR__ . '/navigation.php'; ?>
     <?php require __DIR__ . '/../app/message.php'; ?>
 
-    <div class="container pt-5 px-5 mw-100 bg-light">
+    <div class="container pt-5 px-5 mw-100 bg-body">

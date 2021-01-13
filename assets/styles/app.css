@@ -14,3 +14,32 @@
     margin-right: 0.25em;
   }
 }
+
+/* LIGHT MODE / DARK MODE CONFIG COLORS */
+.bg-black {
+  background-color: #141414;
+}
+
+.bg-body {
+  background-color: #e4e4e4;
+}
+
+.bg-card {
+  background-color: #f5f5f5;
+}
+
+.bg-card-darker {
+  background-color: #ebebeb;
+}
+
+.text-light {
+  color: #cccccc;
+}
+
+.text-card {
+  color: #d1d1d1;
+}
+
+.text-dark {
+  color: #141414;
+}

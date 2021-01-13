@@ -9,7 +9,7 @@ $post = getPostById($postId, $pdo)
 <article>
     <h4>Edit your post <a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $post['title']; ?>.</a></h4>
     <br>
-    <div class="card shadow p-4 mb-4 bg-white mw-100">
+    <div class="card shadow-sm p-4 mb-4 bg-card mw-100">
         <form action="app/posts/update.php?id=<?php echo $post['id']; ?>" method="post">
             <div class="form-group">
                 <label for="title">Title</label>

@@ -2,7 +2,7 @@
 <?php require __DIR__ . '/views/header.php'; ?>
 
 <article>
-    <div class="card shadow p-4 mb-4 bg-white mw-100">
+    <div class="card shadow p-4 mb-4 bg-card mw-100">
         <h1>Register</h1>
         <p><?php $message ?></p>
 

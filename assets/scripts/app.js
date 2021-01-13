@@ -28,3 +28,14 @@ window.scrollTo(0, sessionStorage.scroll);
 window.addEventListener("scroll", () => {
   sessionStorage.setItem("scroll", window.scrollY);
 });
+
+// Light/Dark mode button
+const toggleBtn = document.querySelector(".toggle");
+
+toggleBtn.addEventListener("click", () => {
+  if (toggleBtn.textContent === "🌙") {
+    toggleBtn.textContent = "☀️";
+  } else {
+    toggleBtn.textContent = "🌙";
+  }
+});

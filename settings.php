@@ -8,7 +8,7 @@ $id = (int) $_SESSION['user']['id'];
 
 <article>
     <p><?php $message ?></p>
-    <div class="card shadow p-4 mb-4 bg-white mw-100">
+    <div class="card shadow-sm p-4 mb-4 bg-card mw-100">
         <h4>Username: <?php echo $user['username'] ?></h4>
 
         <br>
@@ -32,7 +32,7 @@ $id = (int) $_SESSION['user']['id'];
 
     <br>
 
-    <div class="card shadow p-4 mb-4 bg-white mw-100">
+    <div class="card shadow-sm p-4 mb-4 bg-card mw-100">
         <form action="app/users/settings.php" method="post">
             <div class="form-group">
                 <small class="form-text text-muted">First name</small>
@@ -52,7 +52,7 @@ $id = (int) $_SESSION['user']['id'];
 
     <br>
 
-    <div class="card shadow p-4 mb-4 bg-white mw-100">
+    <div class="card shadow-sm p-4 mb-4 bg-card mw-100">
         <h3>About</h3>
         <form action="app/users/settings.php" method="post">
             <div class="form-group">
@@ -66,7 +66,7 @@ $id = (int) $_SESSION['user']['id'];
 
     <br>
 
-    <div class="card shadow p-4 mb-4 bg-white mw-100">
+    <div class="card shadow-sm p-4 mb-4 bg-card mw-100">
         <h3>Change email</h3>
         <form action="app/users/updateemail.php" method="post">
             <div class="form-group">
@@ -90,7 +90,7 @@ $id = (int) $_SESSION['user']['id'];
 
     <br>
 
-    <div class="card shadow p-4 mb-4 bg-white mw-100">
+    <div class="card shadow-sm p-4 mb-4 bg-card mw-100">
         <h3>Change password</h3>
         <form action="app/users/updatepassword.php" method="post">
             <div class="form-group">
