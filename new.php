@@ -16,7 +16,7 @@
             <?php $numberOfComments = countNumberOfComments($post['id'], $pdo); ?>
 
             <div class="card shadow p-4 mb-4 bg-card mw-100">
-                <img loading="lazy" src="<?php echo '/app/users/images/' . $post['avatar'] ?>" alt="user-avatar" width="50px">
+                <img class="rounded-circle" loading="lazy" src="<?php echo '/app/users/images/' . $post['avatar'] ?>" alt="user-avatar" width="50px">
                 <?php if ($currentUserId === $userPostId) : ?>
                     <small class="text-muted"><a href="/settings.php?id=<?php echo $post['user_id']; ?>"><?php echo $post['username'] ?></a></small>
                 <?php else : ?>
@@ -26,7 +26,7 @@
                 <h6><strong><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $post['title'] ?></a></strong></h6>
                 <p><a class="text-info" href="<?php echo $post['url'] ?>"><?php echo $post['url'] ?></a></p>
                 <p><?php echo $post['text'] ?></p>
-                <small class="text-muted">Upvotes: <?php echo $upvotes; ?></small>
+                <small class="text-muted">Upvotes: <strong class="text-success"><?php echo $upvotes; ?></strong></small>
                 <?php if ($alreadyUpvoted) : ?>
                     <form action="app/posts/upvotesnew.php" method="post">
                         <svg width="11" height="8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -69,13 +69,13 @@
             <?php $numberOfComments = countNumberOfComments($post['id'], $pdo); ?>
 
             <div class="card shadow p-4 mb-4 bg-card mw-100">
-                <img loading="lazy" src="<?php echo '/app/users/images/' . $post['avatar'] ?>" alt="user-avatar" width="50px">
+                <img class="rounded-circle" loading="lazy" src="<?php echo '/app/users/images/' . $post['avatar'] ?>" alt="user-avatar" width="50px">
                 <small class="text-muted"><a href="/profile.php?id=<?php echo $post['user_id']; ?>"><?php echo $post['username'] ?></a></small>
                 <br>
                 <h6><strong><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $post['title'] ?></a></strong></h6>
                 <p><a class="text-info" href="<?php echo $post['url'] ?>"><?php echo $post['url'] ?></a></p>
                 <p><?php echo $post['text'] ?></p>
-                <small class="text-muted">Upvotes: <?php echo $upvotes; ?></small>
+                <small class="text-muted">Upvotes: <strong class="text-success"><?php echo $upvotes; ?></strong></small>
                 <small class="text-muted">Posted: <?php echo $post['date']; ?></small>
                 <?php if ($numberOfComments == 1) : ?>
                     <small class="text-muted"><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $numberOfComments; ?> comment</a></small>

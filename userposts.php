@@ -24,14 +24,14 @@ $allUserPosts = getUserPosts($userId, $pdo);
                     <?php $numberOfComments = countNumberOfComments($userPost['id'], $pdo); ?>
 
                     <div class="card shadow-sm p-4 mb-4 bg-card-darker mw-100">
-                        <img loading="lazy" src="<?php echo '/app/users/images/' . $user['avatar'] ?>" alt="user-avatar" width="50px">
+                        <img class="rounded-circle" loading="lazy" src="<?php echo '/app/users/images/' . $user['avatar'] ?>" alt="user-avatar" width="50px">
                         <small class="form-text text-muted"><?php echo $user['username'] ?></small>
                         <br>
                         <h6><strong><?php echo $userPost['title'] ?></strong></h6>
                         <p><a class="text-info" href="<?php echo $userPost['url'] ?>"><?php echo $userPost['url'] ?></a></p>
                         <p><?php echo $userPost['text'] ?></p>
                         <small class="form-text text-muted">Posted: <?php echo $userPost['date']; ?></small>
-                        <small class="form-text text-muted">Upvotes: <?php echo $upvotes; ?></small>
+                        <small class="text-muted">Upvotes: <strong class="text-success"><?php echo $upvotes; ?></strong></small>
                         <small class="form-text"><a href="/post.php?id=<?php echo $userPost['id']; ?>"><?php echo $numberOfComments; ?> comments</a></small>
                         <small class="form-text">
                             <?php if ($currentUserId === $userPostId) : ?>

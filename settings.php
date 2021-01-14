@@ -14,7 +14,7 @@ $id = (int) $_SESSION['user']['id'];
         <br>
 
         <?php if (loggedIn()) : ?>
-            <img loading="lazy" src="<?php echo '/app/users/images/' . $user['avatar'] ?>" alt="user-avatar" width="100px">
+            <img class="rounded-circle" loading="lazy" src="<?php echo '/app/users/images/' . $user['avatar'] ?>" alt="user-avatar" width="150px">
         <?php endif; ?>
 
         <br>
