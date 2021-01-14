@@ -23,6 +23,11 @@ if (isset($_POST['email'], $_POST['username'], $_POST['password'])) {
         redirect('/register.php');
     }
 
+    if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $username)) {
+        $_SESSION['message'] = 'The username contains invalid characters.';
+        redirect('/register.php');
+    }
+
     if (strlen($_POST['password']) < 6) {
         $_SESSION['message'] = 'The password must be at least 6 characters long.';
         redirect('/register.php');
