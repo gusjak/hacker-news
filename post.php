@@ -29,12 +29,18 @@ $comments = getComments($postId, $pdo);
             <small class="text-muted">Upvotes: <?php echo $upvotes; ?></small>
             <?php if ($alreadyUpvoted) : ?>
                 <form action="app/posts/upvotespost.php" method="post">
-                    <button class="btn btn-link" type="submit" name="submit">Downvote</button>
+                    <svg width="11" height="8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.5902 7.7696a.5112.5112 0 00.1789.1693A.4743.4743 0 005.0013 8a.4742.4742 0 00.2322-.0611.5112.5112 0 00.1788-.1693L9.9127.8367A.5563.5563 0 0010.001.566a.5625.5625 0 00-.056-.2804.5204.5204 0 00-.1843-.2088A.4763.4763 0 009.5017 0H.5008a.478.478 0 00-.2582.0777.522.522 0 00-.1835.2087.5642.5642 0 00-.0564.2797.558.558 0 00.087.2706l4.5004 6.9329z" fill="#BC3636" />
+                    </svg>
+                    <button class="btn btn-link text-decoration-none" type="submit" name="submit"> Downvote</button>
                     <input type="hidden" name="postid" value="<?php echo $post['id']; ?>">
                 </form>
             <?php else : ?>
                 <form action="app/posts/upvotespost.php" method="post">
-                    <button class="btn btn-link" type="submit" name="submit">Upvote</button>
+                    <svg width="10" height="8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M.4998 8h9.0003a.4773.4773 0 00.2583-.0777.5227.5227 0 00.1838-.209.5664.5664 0 00.0564-.2803.5599.5599 0 00-.087-.2713L5.4115.216c-.1866-.288-.6356-.288-.8226 0L.0888 7.1617a.5579.5579 0 00-.0883.2713.5645.5645 0 00.056.281.521.521 0 00.1843.2091A.4757.4757 0 00.4998 8z" fill="#50C14D" />
+                    </svg>
+                    <button class="btn btn-link text-decoration-none" type="submit" name="submit"> Upvote</button>
                     <input type="hidden" name="postid" value="<?php echo $post['id']; ?>">
                 </form>
             <?php endif; ?>
