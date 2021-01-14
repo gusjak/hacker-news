@@ -33,7 +33,7 @@ if (isset($_POST['email'], $_POST['password'])) {
 
         $_SESSION['user'] = $user;
     } else {
-        $_SESSION['message'] = 'The password doesn\'t match the username. Please try again.';
+        $_SESSION['message'] = 'The password doesn\'t match the entered email. Please try again.';
         redirect('/login.php');
     }
 }
