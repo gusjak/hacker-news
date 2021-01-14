@@ -26,7 +26,10 @@ if (loggedIn() && isset($_POST['current-password'], $_POST['new-password'], $_PO
             $statement->execute();
 
             $_SESSION['user']['password'] = $newPassword;
-            $_SESSION['message'] = 'Your password has been updated.';
+            $_SESSION['message'] = 'Your password has been updated. <br> Please log back in with your new password.';
+
+            unset($_SESSION['user']);
+            redirect('/login.php');
         } else {
             $_SESSION['message'] = 'Your new passwords doesn\'t match. Please try again.';
         }

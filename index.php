@@ -23,7 +23,7 @@
                     <small class="text-muted"><a href="/profile.php?id=<?php echo $post['user_id']; ?>"><?php echo $post['username'] ?></a></small>
                 <?php endif; ?>
                 <br>
-                <h6><strong><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $post['title'] ?></a></strong></h6>
+                <h6><strong><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $post['title'] ?></a></strong></h6> ∂
                 <p><a class="text-info" href="<?php echo $post['url'] ?>"><?php echo $post['url'] ?></a></p>
                 <p><?php echo $post['text'] ?></p>
                 <small class="text-muted">Upvotes: <?php echo $upvotes; ?></small>
