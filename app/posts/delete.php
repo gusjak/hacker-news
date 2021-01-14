@@ -17,5 +17,5 @@ if (loggedIn()) {
 
     $_SESSION['message'] = 'Your post has been deleted.';
 
-    redirect('/userposts.php');
+    redirect('/');
 }

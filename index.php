@@ -17,11 +17,7 @@
 
             <div class="card shadow p-4 mb-4 bg-card mw-100">
                 <img class="rounded-circle" loading="lazy" src="<?php echo '/app/users/images/' . $post['avatar'] ?>" alt="user-avatar" width="50px">
-                <?php if ($currentUserId === $userPostId) : ?>
-                    <small class="text-muted"><a href="/settings.php?id=<?php echo $post['user_id']; ?>"><?php echo $post['username'] ?></a></small>
-                <?php else : ?>
-                    <small class="text-muted"><a href="/profile.php?id=<?php echo $post['user_id']; ?>"><?php echo $post['username'] ?></a></small>
-                <?php endif; ?>
+                <small class="text-muted"><a href="/profile.php?id=<?php echo $post['user_id']; ?>"><?php echo $post['username'] ?></a></small>
                 <br>
                 <h6><strong><a href="/post.php?id=<?php echo $post['id']; ?>"><?php echo $post['title'] ?></a></strong></h6>
                 <p><a class="text-info" href="<?php echo $post['url'] ?>"><?php echo $post['url'] ?></a></p>

@@ -14,9 +14,16 @@ $user = getUserById($_GET['id'], $pdo);
         <p>Email: <?php echo $user['email']; ?></p>
         <p>Name: <?php echo $user['first_name']; ?> <?php echo $user['last_name']; ?></p>
         <p>About: <?php echo $user['biography']; ?></p>
-        <br>
+
+        <?php if ($_SESSION['user']['id'] === $user['id']) : ?>
+            <a href="/settings.php?id=<?php echo $user['id']; ?>">
+                <button type="submit" class="btn btn-success">Edit Settings</button>
+            </a>
+        <?php endif; ?>
+        <div class="py-1"></div>
         <a href="/index.php">
-            < Back </a>
+            <button type="submit" class="btn btn-primary">Back</button>
+        </a>
     </div>
 </article>
 

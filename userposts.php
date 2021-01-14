@@ -25,14 +25,18 @@ $allUserPosts = getUserPosts($userId, $pdo);
 
                     <div class="card shadow-sm p-4 mb-4 bg-card-darker mw-100">
                         <img class="rounded-circle" loading="lazy" src="<?php echo '/app/users/images/' . $user['avatar'] ?>" alt="user-avatar" width="50px">
-                        <small class="form-text text-muted"><?php echo $user['username'] ?></small>
+                        <small class="text-muted"><a href="/profile.php?id=<?php echo $userPost['user_id']; ?>"><?php echo $user['username'] ?></a></small>
                         <br>
                         <h6><strong><?php echo $userPost['title'] ?></strong></h6>
                         <p><a class="text-info" href="<?php echo $userPost['url'] ?>"><?php echo $userPost['url'] ?></a></p>
                         <p><?php echo $userPost['text'] ?></p>
                         <small class="form-text text-muted">Posted: <?php echo $userPost['date']; ?></small>
                         <small class="text-muted">Upvotes: <strong class="text-success"><?php echo $upvotes; ?></strong></small>
-                        <small class="form-text"><a href="/post.php?id=<?php echo $userPost['id']; ?>"><?php echo $numberOfComments; ?> comments</a></small>
+                        <?php if ($numberOfComments == 1) : ?>
+                            <small class="text-muted"><a href="/post.php?id=<?php echo $userPost['id']; ?>"><?php echo $numberOfComments; ?> comment</a></small>
+                        <?php else : ?>
+                            <small class="text-muted"><a href="/post.php?id=<?php echo $userPost['id']; ?>"><?php echo $numberOfComments; ?> comments</a></small>
+                        <?php endif; ?>
                         <small class="form-text">
                             <?php if ($currentUserId === $userPostId) : ?>
                                 <a href="/updateuserpost.php?id=<?php echo $userPost['id']; ?>">Edit</a>

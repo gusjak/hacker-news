@@ -17,11 +17,7 @@ $comments = getComments($postId, $pdo);
 
         <div class="card shadow p-4 mb-4 bg-card mw-100">
             <img class="rounded-circle" loading="lazy" src="<?php echo '/app/users/images/' . $post['avatar'] ?>" alt="user-avatar" width="50px">
-            <?php if ($currentUserId === $userPostId) : ?>
-                <small class="text-muted"><a href="/settings.php?id=<?php echo $post['user_id']; ?>"><?php echo $post['username'] ?></a></small>
-            <?php else : ?>
-                <small class="text-muted"><a href="/profile.php?id=<?php echo $post['user_id']; ?>"><?php echo $post['username'] ?></a></small>
-            <?php endif; ?>
+            <small class="text-muted"><a href="/profile.php?id=<?php echo $post['user_id']; ?>"><?php echo $post['username'] ?></a></small>
             <br>
             <h6><strong><?php echo $post['title'] ?></strong></h6>
             <p><a class="text-info" href="<?php echo $post['url'] ?>"><?php echo $post['url'] ?></a></p>
@@ -78,11 +74,7 @@ $comments = getComments($postId, $pdo);
 
                 <div class="card shadow-sm p-4 mb-4 bg-card-darker mw-100">
                     <img class="rounded-circle" loading="lazy" src="<?php echo '/app/users/images/' . $comment['avatar'] ?>" alt="user-avatar" width="25px">
-                    <?php if ($currentUserId === $userCommentId) : ?>
-                        <small class="text-muted"><a href="/settings.php?id=<?php echo $comment['user_id']; ?>"><?php echo $comment['username']; ?></a></small>
-                    <?php else : ?>
-                        <small class="text-muted"><a href="/profile.php?id=<?php echo $comment['user_id']; ?>"><?php echo $comment['username']; ?></a></small>
-                    <?php endif; ?>
+                    <small class="text-muted"><a href="/profile.php?id=<?php echo $comment['user_id']; ?>"><?php echo $comment['username']; ?></a></small>
                     <p><?php echo $comment['content'] ?></p>
                     <small class="text-muted">Created: <?php echo $comment['date']; ?></small>
                     <?php if ($currentUserId === $userCommentId) : ?>
@@ -128,7 +120,6 @@ $comments = getComments($postId, $pdo);
             <?php endif; ?>
             <?php foreach ($comments as $comment) : ?>
                 <?php $userCommentId = $comment['user_id']; ?>
-
                 <div class="card shadow-sm p-4 mb-4 bg-card-darker mw-100">
                     <img class="rounded-circle" loading="lazy" src="<?php echo '/app/users/images/' . $comment['avatar'] ?>" alt="user-avatar" width="25px">
                     <small class="text-muted"><a href="/profile.php?id=<?php echo $comment['user_id']; ?>"><?php echo $comment['username']; ?></a></small>

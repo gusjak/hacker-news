@@ -25,5 +25,5 @@ if (loggedIn() && isset($_POST['title'], $_POST['url'], $_POST['text-content']))
 
     $_SESSION['message'] = 'Your post has been submitted.';
 
-    redirect('/submit.php');
+    redirect('/new.php');
 }

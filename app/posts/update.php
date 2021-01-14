@@ -23,5 +23,5 @@ if (loggedIn() && isset($_POST)) {
 
     $_SESSION['message'] = 'Your comment has been updated.';
 
-    redirect('/userposts.php');
+    redirect('/post.php?id=' . $postId);
 }
