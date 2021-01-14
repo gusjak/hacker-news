@@ -76,7 +76,7 @@ $comments = getComments($postId, $pdo);
                 <?php $currentUserId = $_SESSION['user']['id']; ?>
                 <?php $userCommentId = $comment['user_id']; ?>
 
-                <div class="card shadow-sm p-4 mb-4 bg-light mw-100">
+                <div class="card shadow-sm p-4 mb-4 bg-card-darker mw-100">
                     <img loading="lazy" src="<?php echo '/app/users/images/' . $comment['avatar'] ?>" alt="user-avatar" width="25px">
                     <?php if ($currentUserId === $userCommentId) : ?>
                         <small class="text-muted"><a href="/settings.php?id=<?php echo $comment['user_id']; ?>"><?php echo $comment['username']; ?></a></small>
@@ -116,17 +116,7 @@ $comments = getComments($postId, $pdo);
         </div>
     </article>
 
-    <article>
-        <div class="card shadow p-4 mb-4 bg-card mw-100">
-            <form action="app/comments/store.php?id=<?php echo $post['id']; ?>" method="post">
-                <div class="form-group">
-                    <small class="text-muted">Comment</small>
-                    <textarea class="form-control" rows="5" cols="5" type="text" name="comment" id="comment"></textarea>
-                </div><!-- /form-group -->
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
-    </article>
+    <div class="py-5"></div>
 
     <article>
         <div class="card shadow-sm p-4 mb-4 bg-light mw-100">
@@ -139,7 +129,7 @@ $comments = getComments($postId, $pdo);
             <?php foreach ($comments as $comment) : ?>
                 <?php $userCommentId = $comment['user_id']; ?>
 
-                <div class="card shadow-sm p-4 mb-4 bg-light mw-100">
+                <div class="card shadow-sm p-4 mb-4 bg-card-darker mw-100">
                     <img loading="lazy" src="<?php echo '/app/users/images/' . $comment['avatar'] ?>" alt="user-avatar" width="25px">
                     <small class="text-muted"><a href="/profile.php?id=<?php echo $comment['user_id']; ?>"><?php echo $comment['username']; ?></a></small>
                     <p><?php echo $comment['content'] ?></p>

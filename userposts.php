@@ -23,7 +23,7 @@ $allUserPosts = getUserPosts($userId, $pdo);
                     <?php $alreadyUpvoted = alreadyUpvoted($userPost['id'], $currentUserId, $pdo); ?>
                     <?php $numberOfComments = countNumberOfComments($userPost['id'], $pdo); ?>
 
-                    <div class="card shadow-sm p-4 mb-4 bg-light mw-100">
+                    <div class="card shadow-sm p-4 mb-4 bg-card-darker mw-100">
                         <img loading="lazy" src="<?php echo '/app/users/images/' . $user['avatar'] ?>" alt="user-avatar" width="50px">
                         <small class="form-text text-muted"><?php echo $user['username'] ?></small>
                         <br>
