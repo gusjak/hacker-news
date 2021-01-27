@@ -103,6 +103,18 @@ Snyggt Jakob! Svårt att hitta något du bör ändra egentligen, här kommer lit
 
 <br>
 
+## Hacker News+
+
+Extra features added by: [Jonathan Larsson](https://github.com/Icarium2)
+
+Link to commit/pull request: https://github.com/gusjak/hacker-news/commit/74b16a804bcae53caf9c8ff65882a2c78cc5053c
+
+- As a user I'm able to reply to comments.
+
+- As a user I'm able to upvote and remove upvote on comments.
+
+<br>
+
 ## License
 
 This project is licensed under the MIT License - see the **[LICENSE](https://github.com/gusjak/hacker-news/blob/main/LICENSE)** here.
