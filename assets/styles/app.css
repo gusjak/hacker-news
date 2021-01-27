@@ -43,3 +43,25 @@
 .text-dark {
   color: #141414;
 }
+
+.reply {
+  max-width: 40%;
+  margin: 10px;
+  padding: 10px;
+}
+
+.replies-container {
+  margin-top: 2vh;
+}
+
+.replies-card {
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  margin-left: 25px;
+  background-color: rgb(240, 235, 235);
+  border-radius: 10px;
+  padding: 10px;
+}
+.replies-container p {
+  font-size: 10px;
+}
