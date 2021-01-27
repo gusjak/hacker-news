@@ -219,3 +219,61 @@ function countNumberOfComments(int $id, object $pdo)
 
     return $numberOfComments['COUNT(*)'];
 }
+
+
+
+
+
+
+
+
+
+
+
+//Gets all replies bound to a specific comment-id.
+
+function getReplies(int $id, PDO $pdo): array
+{
+    $statement = $pdo->prepare('SELECT replies.id, replies.comment_id, replies.user_id, replies.content, replies.date, users.avatar, users.username
+                                FROM replies
+                                INNER JOIN users
+                                ON replies.user_id = users.id
+                                WHERE replies.comment_id = :comment_id
+                                ORDER BY replies.id DESC');
+
+    $statement->bindParam(':comment_id', $id, PDO::PARAM_INT);
+    $statement->execute();
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// -- Functions for upvoting comments --
+// Function to determine if user already upvoted a comment
+function alreadyUpvotedComment(int $commentId, int $userId, object $pdo): bool
+{
+    $statement = $pdo->prepare('SELECT * FROM comment_upvotes WHERE comment_id = :comment_id AND user_id = :user_id');
+
+    $statement->bindParam(':comment_id', $commentId, PDO::PARAM_INT);
+    $statement->bindParam(':user_id', $userId, PDO::PARAM_INT);
+
+    $statement->execute();
+
+    $alreadyUpvotedComment = $statement->fetch(PDO::FETCH_ASSOC);
+
+    return $alreadyUpvotedComment ? true : false;
+}
+
+// Function to count comment-upvotes
+function countCommentUpvotes(int $commentId, object $pdo): string
+{
+    $statement = $pdo->prepare('SELECT COUNT(*) FROM comment_upvotes WHERE comment_id = :comment_id');
+
+    $statement->bindParam(':comment_id', $commentId, PDO::PARAM_INT);
+
+    $statement->execute();
+
+    $upvotes = $statement->fetch(PDO::FETCH_ASSOC);
+
+    return $upvotes['COUNT(*)'];
+}
+
+
