@@ -32,7 +32,5 @@ if (loggedIn() && isset($_POST['comment-id'])) {
         $statement->bindParam(':user_id', $userId, PDO::PARAM_INT);
         $statement->execute();
     }
-   
-   
     redirect("/post.php?id=$postId");
 }

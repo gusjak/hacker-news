@@ -275,5 +275,3 @@ function countCommentUpvotes(int $commentId, object $pdo): string
 
     return $upvotes['COUNT(*)'];
 }
-
-
