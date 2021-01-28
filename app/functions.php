@@ -239,7 +239,7 @@ function getReplies(int $id, PDO $pdo): array
                                 INNER JOIN users
                                 ON replies.user_id = users.id
                                 WHERE replies.comment_id = :comment_id
-                                ORDER BY replies.id DESC');
+                                ORDER BY replies.id ASC');
 
     $statement->bindParam(':comment_id', $id, PDO::PARAM_INT);
     $statement->execute();

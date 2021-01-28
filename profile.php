@@ -15,7 +15,7 @@ $user = getUserById($_GET['id'], $pdo);
         <p>Name: <?php echo $user['first_name']; ?> <?php echo $user['last_name']; ?></p>
         <p>About: <?php echo $user['biography']; ?></p>
 
-        <?php if ($_SESSION['user']['id'] === $user['id']) : ?>
+        <?php if (loggedIn() && $_SESSION['user']['id'] === $user['id']) : ?>
             <a href="/settings.php?id=<?php echo $user['id']; ?>">
                 <button type="submit" class="btn btn-success">Edit Settings</button>
             </a>

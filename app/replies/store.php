@@ -20,7 +20,7 @@ if (loggedIn() && isset($_POST['reply'])) {
     $statement->bindParam(':date', $timestamp, PDO::PARAM_STR);
     $statement->execute();
 
-    $_SESSION['message'] = 'Your comment has been submitted.';
+    $_SESSION['message'] = 'Your reply has been submitted.';
 
     redirect("/post.php?id=$postId");
 }
